@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class SortTest {
 
+
     @Test
     void isBiggerThenPastGood() {
         assertTrue(Sort.isBiggerThenPast(new int[]{100, 77, 23, 1, 1, -33}));

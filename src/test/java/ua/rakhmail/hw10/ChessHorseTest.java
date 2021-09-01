@@ -6,8 +6,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ChessHorseTest {
 
-    private Exception exception;
-
     @Test
     void moveHorseGood() {
         assertTrue(ChessHorse.moveHorse("a1", "b3"));
