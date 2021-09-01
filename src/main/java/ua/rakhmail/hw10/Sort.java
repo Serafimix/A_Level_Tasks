@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Sort {
     public static void main(String[] args) {
-        int[] numbers1 = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int[] numbers1 = {1, 3, 2, 4, 5, 6, 7, 8, 9};
         int[] numbers2 = {9, 8, 7, 6, 5, 4, 3, 2, 1};
         System.out.println("Вывод массива numbers1 на экран:" + System.lineSeparator() + Arrays.toString(numbers1));
         System.out.println("Массив numbers1 отсортированый по убыванию? - " + isBiggerThenPast(numbers1));
@@ -13,12 +13,15 @@ public class Sort {
     }
 
     public static boolean isBiggerThenPast(int[] array) {
-        for (int i = 1; i < array.length; i++) {
-            if (array[i] < array[i - 1]) {
-                return true;
+        boolean allIsBigger = true;
+        if (array.length > 1) {
+            for (int i = 1; i < array.length; i++) {
+                if (array[i] > array[i - 1]) {
+                    allIsBigger = false;
+                    break;
+                }
             }
         }
-        return false;
+        return allIsBigger;
     }
-
 }

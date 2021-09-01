@@ -1,10 +1,9 @@
 package ua.rakhmail.hw10;
 
-import org.junit.Assert;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class SortTest {
 
@@ -38,9 +37,9 @@ class SortTest {
 
     @Test
     void isBiggerThenPastSameNumbers() {
-        assertFalse(Sort.isBiggerThenPast(new int[]{1, 1, 1, 1, 1, 1, 1}));
-        assertFalse(Sort.isBiggerThenPast(new int[]{0, 0, 0, 0, 0, 0, 0, 0}));
-        assertFalse(Sort.isBiggerThenPast(new int[]{-1, -1, -1, -1, -1, -1}));
+        assertTrue(Sort.isBiggerThenPast(new int[]{1, 1, 1, 1, 1, 1, 1}));
+        assertTrue(Sort.isBiggerThenPast(new int[]{0, 0, 0, 0, 0, 0, 0, 0}));
+        assertTrue(Sort.isBiggerThenPast(new int[]{-1, -1, -1, -1, -1, -1}));
     }
 
 }

@@ -1,11 +1,9 @@
 package ua.rakhmail.hw10;
 
-import org.junit.Assert;
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ChessHorseTest {
 
@@ -26,20 +24,6 @@ class ChessHorseTest {
     @Test
     void moveHorseZeroPoint() {
         assertFalse(ChessHorse.moveHorse("",""));
-    }
-
-    @Test
-    void moveHorseOnlyOneStep() {
-        assertFalse(ChessHorse.moveHorse("a1", ""));
-        assertFalse(ChessHorse.moveHorse("h8", ""));
-        assertFalse(ChessHorse.moveHorse("g1", ""));
-    }
-
-    @Test
-    void moveHorseOnlyTwoStep() {
-        assertFalse(ChessHorse.moveHorse("", "a1"));
-        assertFalse(ChessHorse.moveHorse("", "b4"));
-        assertFalse(ChessHorse.moveHorse("", "h8"));
     }
 
     @Test
