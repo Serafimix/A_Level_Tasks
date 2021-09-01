@@ -2,10 +2,11 @@ package ua.rakhmail.hw10;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ChessHorseTest {
+
+    private Exception exception;
 
     @Test
     void moveHorseGood() {
@@ -24,6 +25,24 @@ class ChessHorseTest {
     @Test
     void moveHorseZeroPoint() {
         assertFalse(ChessHorse.moveHorse("",""));
+    }
+
+    @Test
+    void moveHorseWithExceptionsBecauseOnePointIsEmpty(){
+        try{
+            ChessHorse.moveHorse("", "a1");
+            fail("Exception Expected!");
+        }
+        catch(StringIndexOutOfBoundsException e){
+            assertTrue(true);
+        }
+        try{
+            ChessHorse.moveHorse("a1", "");
+            fail("Exception Expected!");
+        }
+        catch(StringIndexOutOfBoundsException e){
+            assertTrue(true);
+        }
     }
 
     @Test
