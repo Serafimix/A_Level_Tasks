@@ -48,9 +48,9 @@ public class Phone {
         System.out.println(iPhone);
         System.out.println(nokia);
         System.out.println(samsung);
-        iPhone.receiveCall(whoYouGonnaCall);
-        nokia.receiveCall(whoYouGonnaCall);
-        samsung.receiveCall(whoYouGonnaCall);
+        receiveCall(whoYouGonnaCall);
+        receiveCall(whoYouGonnaCall);
+        receiveCall(whoYouGonnaCall);
 //      Phone.receiveCall(whoYouGonnaCall); это правильнее.
 
         System.out.println(iPhone.getNumber());

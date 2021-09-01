@@ -12,6 +12,6 @@ public class Task01 {
         SimpleDateFormat simpleDate = new SimpleDateFormat("dd-MMMM HH:mm:ss");
         String adventureTime = simpleDate.format(time);
         System.out.println("\t - Hello " + MY_NAME + ", what time is it?" + System.lineSeparator() +
-                "\t - it\'s " + adventureTime);
+                "\t - it's " + adventureTime);
     }
 }

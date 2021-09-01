@@ -1,16 +1,23 @@
 package ua.rakhmail.hw10;
 
-public class ChessHorse {
+import java.util.Scanner;
 
-    public ChessHorse() {
-    }
+public class ChessHorse {
+    private final String firstCoordinate;
+    private final String secondCoordinate;
+
+        public ChessHorse() {
+            firstCoordinate = new Scanner(System.in).nextLine();
+            secondCoordinate = new Scanner(System.in).nextLine();
+        }
+
 
     public static void main(String[] args) {
-            System.out.println(moveHorse("C5", "E4"));
+            ChessHorse chessHorse = new ChessHorse();
+            System.out.println(moveHorse(chessHorse.firstCoordinate, chessHorse.secondCoordinate));
             System.out.println(moveHorse("C5asfd124", "E4asf124"));
             System.out.println(moveHorse("H0", "G2"));
             System.out.println(moveHorse("A1", "H7"));
-
         }
 
         public static boolean moveHorse(String current, String target) {

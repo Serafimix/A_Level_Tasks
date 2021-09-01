@@ -1,10 +1,10 @@
 package ua.rakhmail.hw09.task01;
 
 public class CreaturePlanet implements Planet {
-    private String name;
-    private long square;
+    private final String name;
+    private final long square;
     protected double gravityAccel;
-    private boolean atmosphere;
+    private final boolean atmosphere;
 
     public CreaturePlanet(String name, long square, boolean atmosphere) {
         this.name = name;
