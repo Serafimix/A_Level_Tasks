@@ -5,12 +5,13 @@ public enum PlanetEnum {
 
     private final int satellite;
 
-    PlanetEnum(int i) {
-        this.satellite = i;
+    PlanetEnum(int satellite) {
+        this.satellite = satellite;
     }
 
-    public int getSolar(){
+    public int getSatellite(){
         return satellite;
     }
 
+    // testing is attending
 }

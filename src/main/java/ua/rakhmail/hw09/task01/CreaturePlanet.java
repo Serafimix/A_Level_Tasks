@@ -31,11 +31,27 @@ public class CreaturePlanet implements Planet {
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        int hashCode = 1;
+        hashCode = hashCode * 13 + (atmosphere ? 1 : 0);
+        hashCode = hashCode * 13 + (int) (square ^ (square >>> 32));
+        long doubleToLongBits = Double.doubleToLongBits(gravityAccel);
+        hashCode = hashCode * 13 + (int) (doubleToLongBits ^ (doubleToLongBits >>> 32));
+        hashCode = hashCode * 13 + name.length();
+        return hashCode;
     }
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if (!(obj instanceof CreaturePlanet) && !(this instanceof CreaturePlanet))
+            return false;
+        else
+            return ((this.atmosphere == ((CreaturePlanet) obj).atmosphere) &&
+                    (((CreaturePlanet) obj).atmosphere == this.atmosphere) &&
+                    (this.name.equals(((CreaturePlanet) obj).name)) &&
+                    (((CreaturePlanet) obj).name.equals(this.name)) &&
+                    (this.square == ((CreaturePlanet) obj).square) &&
+                    (((CreaturePlanet) obj).square == this.square) &&
+                    (this.gravityAccel == ((CreaturePlanet) obj).gravityAccel) &&
+                    (((CreaturePlanet) obj).gravityAccel == this.gravityAccel));
     }
 }
