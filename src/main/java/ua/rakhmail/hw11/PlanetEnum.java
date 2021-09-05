@@ -9,7 +9,7 @@ public enum PlanetEnum {
         this.satellite = satellite;
     }
 
-    public int getSatellite(){
+    public int getSatellite() {
         return satellite;
     }
 

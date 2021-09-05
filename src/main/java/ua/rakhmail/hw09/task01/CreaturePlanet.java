@@ -28,6 +28,7 @@ public class CreaturePlanet implements Planet {
         // гравитационная постоянная ( 6,67430[15] * 10-11 m*s*kg ) умноженная на
         // массу планеты деленную на радиус планеты в квадрате.
     }
+
     @Override
     public int hashCode() {
         int hashCode = 1;
@@ -38,6 +39,8 @@ public class CreaturePlanet implements Planet {
         hashCode = hashCode * 13 + name.length();
         return hashCode;
     }
+
+    //testing is attending
 
     @Override
     public boolean equals(Object obj) {

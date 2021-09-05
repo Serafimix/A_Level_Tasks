@@ -47,13 +47,17 @@ class PlanetEnumTest {
 
     @Test
     void testWithSwitchCaseAndGetName() {
+        String string = "This is EARTH";
+        String string1;
         switch (planet) {
-            case MERCURY -> System.out.println("This is " + mercury.name());
-            case VENUS -> System.out.println("This is " + venus.name());
-            case EARTH -> System.out.println("This is " + earth.name());
-            case MARS -> System.out.println("This is " + mars.name());
-            case JUPITER -> System.out.println("This is " + jupiter.name());
-            case SATURN -> System.out.println("This is " + saturn.name());
+            case MERCURY -> string1 = "This is " + mercury.name();
+            case VENUS -> string1 = "This is " + venus.name();
+            case EARTH -> string1 = "This is " + earth.name();
+            case MARS -> string1 = "This is " + mars.name();
+            case JUPITER -> string1 = "This is " + jupiter.name();
+            case SATURN -> string1 = "This is " + saturn.name();
+            default -> throw new IllegalStateException("Unexpected value: " + planet);
         }
+        assertEquals(string, string1);
     }
 }
