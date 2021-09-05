@@ -1,12 +1,20 @@
 package ua.rakhmail.module01;
 
-import ua.rakhmail.hw10.ChessHorse;
-
 import java.util.Scanner;
 
 public class Task02 {
-    private final String firstCoordinate;
-    private final String secondCoordinate;
+    private String firstCoordinate;
+    private String secondCoordinate;
+
+    public Task02(Converter converter){
+    }
+
+    class Converter{
+        Converter(){
+            int indexOfFirstStep = (firstCoordinate.charAt(0)-95)*(firstCoordinate.charAt(1)-47);
+            int indexOfSecondStep = (secondCoordinate.charAt(0)-95)*(firstCoordinate.charAt(1)-47);
+        }
+    }
 
         public Task02() {
             firstCoordinate = new Scanner(System.in).nextLine();
