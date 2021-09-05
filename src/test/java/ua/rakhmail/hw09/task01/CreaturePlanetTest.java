@@ -1,6 +1,7 @@
 package ua.rakhmail.hw09.task01;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -22,6 +23,7 @@ class CreaturePlanetTest {
 
 
     @Test
+    @DisplayName("test hash code equals true")
     void testHashCodeEqualsTrue() {
         assertEquals(earth1.hashCode(), earth2.hashCode());
         assertEquals(earth2.hashCode(), earth1.hashCode());
@@ -39,6 +41,7 @@ class CreaturePlanetTest {
     }
 
     @Test
+    @DisplayName("test equals true")
     void testEqualsTrue() {
         assertEquals(earth1, earth2);
         assertEquals(earth2, earth3);
@@ -48,6 +51,7 @@ class CreaturePlanetTest {
     }
 
     @Test
+    @DisplayName("test equals false")
     void testEqualsFalse() {
         assertNotEquals(earth1, mars);
         assertNotEquals(earth2, mars);
