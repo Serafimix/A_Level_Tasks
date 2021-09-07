@@ -13,10 +13,13 @@ class PhoneBook {
         PHONE_BOOK[0] = "016/161616";
         PHONE_BOOK[1] = "016/161617";
         PHONE_BOOK[2] = "016/161618";
-        System.out.println("Index of number "+ phoneBook.stringTrue + " = " + phoneBook.findIndexByPhoneNumber(phoneBook.stringTrue));
+        System.out.println("Index of number "+ phoneBook.stringTrue + " = " +
+                phoneBook.findIndexByPhoneNumber(phoneBook.stringTrue));
     }
 
     public Optional<Integer> findIndexByPhoneNumber(String phoneNumber) {
+        if (phoneNumber != null)
         return Optional.of(Arrays.asList(PHONE_BOOK).indexOf(phoneNumber));
+        else return Optional.empty();
     }
 }
