@@ -5,8 +5,8 @@ import java.util.Optional;
 
 class PhoneBook {
     private static final String[] PHONE_BOOK = new String[3];
-    String stringTrue = "016/161617";
-    String stringNull;
+    private final String stringTrue = "016/161617";
+    private String stringNull;
 
     public static void main(String[] args) {
         PhoneBook phoneBook = new PhoneBook();
@@ -14,7 +14,8 @@ class PhoneBook {
         PHONE_BOOK[1] = "016/161617";
         PHONE_BOOK[2] = "016/161618";
         System.out.println("Index of number "+ phoneBook.stringTrue + " = " +
-                phoneBook.findIndexByPhoneNumber(phoneBook.stringTrue));
+                phoneBook.findIndexByPhoneNumber(phoneBook.stringTrue).get());
+        System.out.println("Search with null "+ phoneBook.findIndexByPhoneNumber(phoneBook.stringNull));
     }
 
     public Optional<Integer> findIndexByPhoneNumber(String phoneNumber) {
