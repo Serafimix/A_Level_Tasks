@@ -6,7 +6,7 @@ import java.util.Optional;
 class PhoneBook {
     private static final String[] PHONE_BOOK = new String[3];
     String stringTrue = "016/161617";
-    String stringNull= "";
+    String stringNull;
 
     public static void main(String[] args) {
         PhoneBook phoneBook = new PhoneBook();
@@ -18,8 +18,6 @@ class PhoneBook {
     }
 
     public Optional<Integer> findIndexByPhoneNumber(String phoneNumber) {
-        if (phoneNumber != null)
         return Optional.of(Arrays.asList(PHONE_BOOK).indexOf(phoneNumber));
-        else return Optional.empty();
     }
 }
