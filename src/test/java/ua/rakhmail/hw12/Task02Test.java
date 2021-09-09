@@ -44,5 +44,4 @@ class Task02Test {
         Assertions.assertNotEquals('0', testObject.methodG(string));
     }
 
-
 }
