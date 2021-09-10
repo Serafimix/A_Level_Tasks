@@ -21,8 +21,9 @@ public class Task02 {
     }
 
     public char methodG(String string) {
-        if (string.length() < 1)
+        if (string.length() < 1) {
             throw new StringIndexOutOfBoundsException();
+        }
         return string.charAt(0);
     }
 }

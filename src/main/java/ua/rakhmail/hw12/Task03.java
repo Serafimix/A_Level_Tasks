@@ -13,12 +13,15 @@ public class Task03 {
     }
 
     public char toMuchExceptions(int n, String[] arrayOfString) {
-        if (n == 0)
+        if (n == 0) {
             throw new MyArithmeticExc();
-        if (n >= arrayOfString.length - 1)
+        }
+        if (n >= arrayOfString.length - 1) {
             throw new NotInArrayExc();
-        if (n >= arrayOfString[n + 1].length() - 1)
+        }
+        if (n >= arrayOfString[n + 1].length() - 1) {
             throw new NotInStringExc();
+        }
         int zero = n + 1 / n;
         return arrayOfString[n + 1].charAt(n + 1);
     }
