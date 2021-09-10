@@ -8,17 +8,16 @@ class PhoneBook {
 
     public static void main(String[] args) {
 
-        PhoneBook phoneBook = new PhoneBook();
         PHONE_BOOK[0] = "016/161616";
         PHONE_BOOK[1] = "016/161617";
         PHONE_BOOK[2] = "016/161618";
-            System.out.println("Index of number 016/161617 = " +
-                    phoneBook.findIndexByPhoneNumber("016/161617"));
-        System.out.println("Search with null " + phoneBook.findIndexByPhoneNumber(null));
+        System.out.println("Index of number 016/161617 = " +
+                findIndexByPhoneNumber(PHONE_BOOK, "016/161617"));
+        System.out.println("Search with null " + findIndexByPhoneNumber(PHONE_BOOK, null));
     }
 
-    public Optional<Integer> findIndexByPhoneNumber(String phoneNumber) {
-        Optional<Integer> number = Optional.of(Arrays.asList(PHONE_BOOK).indexOf(phoneNumber));
+    public static Optional<Integer> findIndexByPhoneNumber(String[] array, String phoneNumber) {
+        Optional<Integer> number = Optional.of(Arrays.asList(array).indexOf(phoneNumber));
         return number.get() != -1 ? number : Optional.empty();
     }
 }
