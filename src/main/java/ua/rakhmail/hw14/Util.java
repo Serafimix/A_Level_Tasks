@@ -25,14 +25,14 @@ class Util<T> implements Multiplier<T> {
         return array;
     }
 
-    public void sum(Integer one, Integer two) {
-        System.out.println(one + two);
+    public void sum(Number one, Number two) {
+        System.out.println((Double) one + (Double) two);
     }
 
     public double sumOfArray(List<Number> list) {
         double s = 0.0;
-        for (Object n : list) {
-            s += (Integer) n;
+        for (var n : list) {
+            s += (Double) n;
         }
         return s;
     }
