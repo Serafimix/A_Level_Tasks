@@ -18,28 +18,31 @@ class Util<T> implements Multiplier<T> {
     }
 
     @Override
-    public T[] doubleValueIn(T[] array) {
+    public Object[] doubleValueIn(Object[] array) {
         for (int i = 0; i < array.length; i++) {
             array[i] = array[i] * array[i];
         }
         return array;
     }
 
-    public void sum(Integer one, Integer two) {
+    public void sum(Object one, Object two) { // should work only with numbers
         System.out.println(one + two);
     }
 
-    public double sumOfArray(List<Number> list) {
+    public double sumOfArray(List<Object> list) {
         double s = 0.0;
-        for (var n : list) {
-            s += (double) n;
+        for (Object n : list) {
+            s += n;
         }
         return s;
     }
 
-    public void addNumbers(List<Integer> list) {
+    public void addNumbers(List<Object> list) {
         for (int i = 1; i <= 10; i++) {
             list.add(i);
         }
     }
 }
+
+
+
