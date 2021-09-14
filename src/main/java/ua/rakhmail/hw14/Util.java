@@ -31,8 +31,8 @@ class Util<T> implements Multiplier<T> {
 
     public double sumOfArray(List<Number> list) {
         double s = 0.0;
-        for (var n : list) {
-            s += (Double) n;
+        for (Number n : list) {
+            s += (Integer) n;
         }
         return s;
     }
