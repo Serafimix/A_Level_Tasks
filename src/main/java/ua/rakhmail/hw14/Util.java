@@ -29,10 +29,10 @@ class Util<T> implements Multiplier<T> {
         System.out.println((Double) one + (Double) two);
     }
 
-    public double sumOfArray(List<Number> list) {
+    public double sumOfArray(List<? extends Number> list) {
         double s = 0.0;
         for (Number n : list) {
-            s += (Integer) n;
+            s += n.doubleValue();
         }
         return s;
     }
