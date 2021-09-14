@@ -43,6 +43,3 @@ class Util<T> implements Multiplier<T> {
         }
     }
 }
-
-
-
