@@ -1,62 +1,45 @@
 package ua.rakhmail.hw14;
 
-class Util implements Multiplier {
-    Object value;
+import java.util.List;
 
-    public void printHashCode(Object e) {
+class Util<T> implements Multiplier<T> {
+    T value;
+
+    public void printHashCode(T e) {
         System.out.println("HashCode: " + e.hashCode());
     }
 
-    public void save(Object value) {
+    public void save(T value) {
         this.value = value;
     }
 
-    public Object get() {
+    public T get() {
         return value;
     }
 
     @Override
-    public Object[] doubleValueIn(Object[] array) {
+    public T[] doubleValueIn(T[] array) {
         for (int i = 0; i < array.length; i++) {
             array[i] = array[i] * array[i];
         }
         return array;
     }
 
-    public void sum(Object one, Object two) { // should work only with numbers
+    public void sum(Integer one, Integer two) {
         System.out.println(one + two);
     }
 
-    public double sumOfArray(List<Object> list) {
+    public double sumOfArray(List<Number> list) {
         double s = 0.0;
-        for (Object n : list) {
-            s += n;
+        for (var n : list) {
+            s += (double) n;
         }
         return s;
     }
 
-    public void addNumbers(List<Object> list) {
+    public void addNumbers(List<Integer> list) {
         for (int i = 1; i <= 10; i++) {
             list.add(i);
         }
-    }
-}
-
-interface Multiplier {
-    Object[] doubleValueIn(Object[] array);
-}
-
-public class Test {
-    public static void main(String[] args) {
-        Util<String> util = new Util<>();
-        util.printHashCode("Test");
-        util.save("Value");
-        System.out.println(util.get());
-        Number[] arr = {1, 2, 3, 4, 0, 5, 6, 7};
-        System.out.println(Arrays.toString(util.doubleValueIn(arr)));
-        System.out.println(util.sumOfArray(Arrays.asList(arr)));
-        List<Integer> list = new ArrayList<>();
-        util.addNumbers(list);
-        System.out.println(Arrays.toString(list.toArray()));
     }
 }
