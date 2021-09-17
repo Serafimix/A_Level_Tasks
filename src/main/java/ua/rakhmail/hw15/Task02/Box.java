@@ -47,8 +47,7 @@ public class Box implements Comparable<Box> {
                     return -1;
                 } else return 1;
             }
-            int dif = Integer.compare(o2.value, o1.value);
-            return dif;
+            return Integer.compare(o2.value, o1.value);
         }
     }
 }
