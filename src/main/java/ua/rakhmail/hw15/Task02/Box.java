@@ -4,7 +4,7 @@ import java.util.Comparator;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class Box implements Comparable<Box> {
+public class Box{
     private final int value;
 
     public static void main(String[] args) {
@@ -21,12 +21,6 @@ public class Box implements Comparable<Box> {
 
     public int getValue() {
         return value;
-    }
-
-    @Override
-    public int compareTo(Box b) {
-
-        return 0;
     }
 
     public static void fillSet(Set<Box> set) {
