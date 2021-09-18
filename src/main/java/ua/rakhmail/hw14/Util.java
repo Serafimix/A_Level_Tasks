@@ -26,7 +26,7 @@ class Util<T> implements Multiplier<T> {
         return (T[]) Arrays.copyOf(array, array.length);
     }
 
-    public void sum(Number one, Number two) {
+    public <T extends Number> void sum(T one, T two) {
         System.out.println(one.doubleValue() + two.doubleValue());
     }
 
