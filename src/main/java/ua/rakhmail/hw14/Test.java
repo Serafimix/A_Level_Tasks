@@ -16,6 +16,6 @@ public class Test {
         List<Integer> list = new ArrayList<>();
         util.addNumbers(list);
         System.out.println(Arrays.toString(list.toArray()));
-        util.sum(5, 2.5); // этого вызова метода в мейне не было, без него метод sum нигде не используется.
+        util.sum(5, 2.5);
     }
 }

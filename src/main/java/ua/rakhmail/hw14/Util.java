@@ -1,5 +1,6 @@
 package ua.rakhmail.hw14;
 
+import java.util.Arrays;
 import java.util.List;
 
 class Util<T> implements Multiplier<T> {
@@ -18,11 +19,11 @@ class Util<T> implements Multiplier<T> {
     }
 
     @Override
-    public Number[] doubleValueIn(Number[] array) {
+    public T[] doubleValueIn(Number[] array) {
         for (int i = 0; i < array.length; i++) {
-            array[i] = (Integer) array[i] * (Integer) array[i];
+            array[i] = array[i].doubleValue() * array[i].doubleValue();
         }
-        return array;
+        return (T[]) Arrays.copyOf(array, array.length);
     }
 
     public void sum(Number one, Number two) {
