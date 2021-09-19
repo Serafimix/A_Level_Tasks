@@ -5,11 +5,16 @@ import org.junit.jupiter.api.Test;
 
 class MyListTest {
 
-    MyList<Integer> myList;
+    MyList<Integer> myListAllBeGood;
+    MyList<Integer> myListEmpty;
+    MyList<Integer> myListEmptyForAddMethod;
+    MyList<Integer> myListOneElement;
 
     @BeforeEach
     void setUp() {
-        myList = new MyList<>();
+        myListAllBeGood = new MyList<>();
+        myListOneElement = new MyList<>();
+        myListEmptyForAddMethod = new MyList<>();
     }
 
     @Test

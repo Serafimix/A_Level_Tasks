@@ -17,7 +17,28 @@ class ListToMapClassTest {
     @BeforeEach
     void setUp() {
         Collections.addAll(listWithStringMany, "D", "Vi", "Alu", "Vlad", "Dracu");
+        Collections.addAll(listWithInteger, 1, 12, 12);
         listWithStringOne.add("Vampire");
+    }
+
+    @Test
+    void listToMapWhenAllGood() {
+
+    }
+
+    @Test
+    void listToMapWithOneElement() {
+
+    }
+
+    @Test
+    void listToMapWithNotString() {
+
+    }
+
+    @Test
+    void listToMapWithNumbers() {
+
     }
 
     @Test
