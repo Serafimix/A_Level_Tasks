@@ -2,18 +2,9 @@ package ua.rakhmail.hw15.Task02;
 
 import java.util.Comparator;
 import java.util.Set;
-import java.util.TreeSet;
 
 public class Box{
     private final int value;
-
-    public static void main(String[] args) {
-        Set<Box> boxSet = new TreeSet<>(new BoxComparator());
-        fillSet(boxSet);
-        for (var boxValue : boxSet) {
-            System.out.println(boxValue.getValue());
-        }
-    }
 
     public Box(int value) {
         this.value = value;

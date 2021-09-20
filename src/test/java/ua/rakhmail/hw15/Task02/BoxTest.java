@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 import java.util.Set;
 import java.util.TreeSet;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class BoxTest {
 
     Set<Box> boxSet;
@@ -18,9 +16,11 @@ class BoxTest {
     }
 
     @Test
-    void fillSet() {
-
-
+    void testLikeAMain() {
+        Box.fillSet(boxSet);
+        for (var boxValue : boxSet) {
+            System.out.println(boxValue.getValue());
+        }
     }
 
     // пустой, 1 элем, нормальнй, проверка  последованности,
