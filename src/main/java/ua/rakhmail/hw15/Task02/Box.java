@@ -30,7 +30,9 @@ public class Box{
             if (o1.value == 0 || o2.value == 0) {
                 if (o1.value == 0) {
                     return -1;
-                } else return 1;
+                } else {
+                    return 1;
+                }
             }
             return Integer.compare(o2.value, o1.value);
         }

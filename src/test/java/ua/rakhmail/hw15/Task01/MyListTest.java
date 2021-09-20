@@ -20,17 +20,17 @@ class MyListTest {
     }
 
     @Test
-    void add() {
+    void testAddWithoutException() {
         list.add("1"); //new tail.
     }
 
     @Test
-    void getFromLastThrowNullEx() {
+    void testGetFromLastThrowNullEx() {
         Assert.assertThrows(NullPointerException.class, ()-> list.getFromLast("123"));
     }
 
     @Test
-    void testLikeAMain() {
+    void testGetFromLastWhenWork() {
         Assertions.assertEquals("3", list.getFromLast("3"));
     }
 

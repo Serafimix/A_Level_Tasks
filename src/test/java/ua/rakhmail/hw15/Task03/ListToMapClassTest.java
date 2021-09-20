@@ -16,7 +16,6 @@ class ListToMapClassTest {
     List<String> listWithStringOne;
     List<Integer> listWithInteger;
 
-
     @BeforeEach
     void setUp() {
         listWithStringOne = new ArrayList<>();
@@ -28,21 +27,11 @@ class ListToMapClassTest {
     }
 
     @Test
-    void listToMapWhenAllGood() {
-
-    }
-
-    @Test
     void listToMapWithOneElement() {
         mapEmpty = ListToMapClass.listToMap(listWithStringOne);
         Assertions.assertEquals(Optional.of(3), Optional.ofNullable(mapEmpty.get("One")));
     }
 
-    //    @Test
-//    void listToMapWithNotString() {
-//        Assert.assertThrows(new Exception(), () -> mapEmpty = ListToMapClass.listToMap(listWithInteger));
-//    }
-//
     @Test
     void listToMapWithNumbers() {
         mapEmpty = ListToMapClass.listToMap(listWithStringManyNumbers);
@@ -55,7 +44,4 @@ class ListToMapClassTest {
         System.out.println("Преобразование пустого листа в мапу прошло успешно.");
         Assertions.assertTrue(mapEmpty.isEmpty());
     }
-
-    /* 1 элем, пустой, не стринг, цифры, норм,
-     */
 }
