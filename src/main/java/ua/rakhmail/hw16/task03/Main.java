@@ -14,7 +14,6 @@ public class Main {
         Iterator stringIterator = new IteratorForArray(strings);
         while (stringIterator.hasNext()) {
             System.out.println(stringIterator.next());
-
         }
     }
 }
