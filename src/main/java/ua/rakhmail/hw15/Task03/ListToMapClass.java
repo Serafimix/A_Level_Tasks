@@ -6,9 +6,15 @@ import java.util.Map;
 
 public class ListToMapClass {
     public static Map<String, Integer> listToMap(List<String> list) {
-        Map<String, Integer> map = new HashMap<>();
+        if (list == null){
+            return null;
+        }
+        Map<String, Integer> map = new HashMap<>(list.size());
         for (var string : list) {
-            map.put(string, string.length());
+            if (string != null) {
+                String liters = string.replaceAll("[^a-zA-Zа-яА-Я]+", "");
+                map.put(string, liters.length());
+            }
         }
         return map;
     }
