@@ -24,8 +24,20 @@ public class Student {
             if (list.get(i).grade < 3) {
                 list.remove(i);
                 i--;
-            } else if (list.get(i).course < 6) {
-                list.get(i).course += 1;
+            }
+        }
+    }
+
+    public static void courseUpper(List<Student> list) {
+        for (var stu : list) {
+            if (stu.grade >= 3) {
+                stu.course++;
+            }
+        }
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).course == 7) {
+                list.remove(i);
+                i--;
             }
         }
     }
