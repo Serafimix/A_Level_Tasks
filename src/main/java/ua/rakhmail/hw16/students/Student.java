@@ -24,11 +24,8 @@ public class Student {
             if (list.get(i).grade < 3) {
                 list.remove(i);
                 i--;
-            }
-        }
-        for (Student student : list) {
-            if (student.course < 6) {
-                student.course += 1;
+            } else if (list.get(i).course < 6) {
+                list.get(i).course += 1;
             }
         }
     }
