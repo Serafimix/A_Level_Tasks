@@ -7,7 +7,8 @@ public class Task02 {
 
     public static void putInVocabulary(String line) {
         if (line != null) {
-            vocabulary.put(line, vocabulary.containsKey(line) ? vocabulary.get(line) + 1 : 1);
+//            vocabulary.put(line, vocabulary.containsKey(line) ? vocabulary.get(line) + 1 : 1); (старый метод)
+            vocabulary.merge(line, 1, Integer::sum); // (аналогичный метод, но короче)
         }
     }
 
@@ -32,6 +33,7 @@ public class Task02 {
         putInVocabulary("Son");
         putInVocabulary("Son");
         putInVocabulary("Son");
+        putInVocabulary("Daughter");
         printMap(vocabulary);
     }
 }
