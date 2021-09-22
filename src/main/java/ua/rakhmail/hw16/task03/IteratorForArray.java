@@ -12,10 +12,11 @@ public class IteratorForArray<T> implements Iterator<T> {
     }
 
     public T next() throws NoSuchElementException {
-        if (hasNext())
+        if (hasNext()) {
             return array[position++];
-        else
+        } else {
             throw new NoSuchElementException();
+        }
     }
 
     public boolean hasNext() {
