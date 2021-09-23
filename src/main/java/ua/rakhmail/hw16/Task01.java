@@ -1,6 +1,6 @@
 package ua.rakhmail.hw16;
 
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,21 +12,21 @@ public class Task01 {
     public static void main(String[] args) {
         List<Integer> arrayList = new ArrayList<>(); // размер не задаю для лучших результатов
         List<Integer> linkedList = new LinkedList<>();
-        System.out.println("Start arrayList work " + System.lineSeparator() + LocalDateTime.now());
+        System.out.println("Start arrayList work " + System.lineSeparator() + LocalTime.now());
         takeRandom(arrayList);
-        System.out.println("End arrayList work" + System.lineSeparator() + LocalDateTime.now());
-        System.out.println("Start linkedList work" + System.lineSeparator() + LocalDateTime.now());
+        System.out.println("End arrayList work" + System.lineSeparator() + LocalTime.now());
+        System.out.println("Start linkedList work" + System.lineSeparator() + LocalTime.now());
         takeRandom(linkedList);
-        System.out.println("End linkedList work" + System.lineSeparator() + LocalDateTime.now());
+        System.out.println("End linkedList work" + System.lineSeparator() + LocalTime.now());
         /*
         Start arrayList work
-        2021-09-21T14:04:21.011032100
+        14:04:21.011032100
         End arrayList work
-        2021-09-21T14:04:21.058903300
+        14:04:21.058903300
         Start linkedList work
-        2021-09-21T14:04:21.058903300
+        14:04:21.058903300
         End linkedList work
-        2021-09-21T14:06:43.746182400
+        14:06:43.746182400
         */
     }
 

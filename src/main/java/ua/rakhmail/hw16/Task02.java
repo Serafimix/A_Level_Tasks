@@ -1,12 +1,15 @@
 package ua.rakhmail.hw16;
 
-import java.util.*;
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 public class Task02 {
     static SortedMap<String, Integer> vocabulary = new TreeMap<>();
 
     public static void putInVocabulary(String line) {
         if (line != null) {
+//            Pattern.compile("^[a-zA-Zа-яА-Я]", line).asPredicate(); (спросить)
 //            vocabulary.put(line, vocabulary.containsKey(line) ? vocabulary.get(line) + 1 : 1); (старый метод)
             vocabulary.merge(line, 1, Integer::sum); // (аналогичный метод, но короче)
         }
