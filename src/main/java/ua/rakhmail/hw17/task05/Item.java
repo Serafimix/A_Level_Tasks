@@ -1,11 +1,17 @@
 package ua.rakhmail.hw17.task05;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
 public class Item {
+    static int count = 1;
+
     private String name;
     private int cost;
+
+    public Item() {
+        name = "Item" + count;
+        cost = count;
+        count++;
+    }
 }
