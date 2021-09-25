@@ -20,6 +20,5 @@ public class Task02 {
         Collections.addAll(numbers, 6, 1, 7, 9, 4, 12, 3, 6, 15,
                 7, 1, 2, 5, 7, -5, -12, -6, 12, -1256, -1241256);
         printNumberStatistic(numbers);
-
     }
 }
