@@ -23,7 +23,7 @@ public class Task03 {
 
     public static void main(String[] args) {
         List<String> dates = new ArrayList<>();
-        Collections.addAll(dates, "1234/01/23", "2021/02/31", "2022/05/30", "2020/04/13");
+        Collections.addAll(dates, "0234/01/23", "2021/02/31", "2022/05/30", "2020/04/13");
         System.out.println("In dates list attend 2021 year? " + checkDate(dates));
 
         List<String> dates1 = new ArrayList<>();

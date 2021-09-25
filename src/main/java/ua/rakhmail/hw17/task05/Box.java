@@ -3,32 +3,31 @@ package ua.rakhmail.hw17.task05;
 import lombok.Data;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
 @Data
 public class Box {
-    private int size;
+    Random random = new Random();
+    private int size = random.nextInt(10) + 1;
     private List<Item> items;
 
-    public Box () {
-        for (int i = 0; i < 10; i++) {
-            items = new ArrayList<>();
+    public Box() {
+        items = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            items.add(new Item());
         }
-        size = new Random().nextInt(10) + 1;
     }
 
-//    public void print
-
-public static void printFilterColl (List<Box> boxes) {
+    public static void printFilterColl(List<Box> boxes) throws ClassCastException {
         int limit = new Random().nextInt(10) + 1;
         boxes.stream()
                 .filter(box -> box.size <= limit && box.size >= limit)
-                .flatMap(box -> box.items.stream())
-                .sorted()
+                .map(Box::getItems)
+                .peek(items -> items.sort(Comparator.comparingInt(Item::getCost)))
                 .forEach(System.out::println);
 
 
-
-}
+    }
 }
