@@ -7,10 +7,8 @@ public class Main {
 
     public static void main(String[] args) {
         List<Box> boxes = new ArrayList<>(10);
-        for (int i = 0; i < 10; i++) {
-            boxes.add(new Box());
-        }
-        Box.printFilterColl(boxes);
+        BoxService.fillBoxes(boxes, 10);
+        BoxService.printFilterColl(boxes);
     }
 }
 
