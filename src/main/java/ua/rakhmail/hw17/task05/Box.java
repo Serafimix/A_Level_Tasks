@@ -8,9 +8,9 @@ import java.util.Random;
 
 @Data
 public class Box {
-    Random random = new Random();
+    protected static Random random = new Random();
     protected int size = random.nextInt(10) + 1;
-    protected List<Item> items;
+    private List<Item> items;
 
     public Box() {
         items = new ArrayList<>();
