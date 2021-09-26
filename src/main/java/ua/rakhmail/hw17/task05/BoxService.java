@@ -2,8 +2,14 @@ package ua.rakhmail.hw17.task05;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Random;
 
-public class BoxService extends Box {
+public final class BoxService {
+    private static final Random random = new Random();
+
+    private BoxService() {
+
+    }
 
     public static void printFilterColl(List<Box> boxes) throws ClassCastException {
 
