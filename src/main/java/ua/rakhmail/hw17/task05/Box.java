@@ -4,18 +4,18 @@ import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 @Data
 public class Box {
-    public static Random random = new Random();
-    protected int size = random.nextInt(10) + 1;
+    private static int count = 1;
     private List<Item> items;
+    protected int size = count;
 
     public Box() {
         items = new ArrayList<>();
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < count; i++) {
             items.add(new Item());
         }
+        count++;
     }
 }

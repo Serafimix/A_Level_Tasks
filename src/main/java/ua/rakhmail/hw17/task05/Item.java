@@ -10,7 +10,7 @@ public class Item {
 
     public Item() {
         name = "Item" + count;
-        cost = Box.random.nextInt(10000) + 1;
+        cost = BoxService.random.nextInt(10000) + 1;
         count++;
     }
 }
