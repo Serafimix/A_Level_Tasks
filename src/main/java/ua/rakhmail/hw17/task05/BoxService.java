@@ -1,9 +1,12 @@
 package ua.rakhmail.hw17.task05;
 
+import lombok.Value;
+
 import java.util.Comparator;
 import java.util.List;
 
-public final class BoxService {
+@Value
+public class BoxService {
 
     private BoxService() {
 
