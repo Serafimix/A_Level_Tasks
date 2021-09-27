@@ -8,7 +8,7 @@ import java.util.Random;
 
 @Data
 public class Box {
-    protected static Random random = new Random();
+    public static Random random = new Random();
     protected int size = random.nextInt(10) + 1;
     private List<Item> items;
 

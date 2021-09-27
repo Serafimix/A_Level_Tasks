@@ -2,18 +2,15 @@ package ua.rakhmail.hw17.task05;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.Random;
 
 public final class BoxService {
-    private static final Random random = new Random();
 
     private BoxService() {
 
     }
 
     public static void printFilterColl(List<Box> boxes) throws ClassCastException {
-
-        int limit = random.nextInt(10) + 1;
+        int limit = Box.random.nextInt(10) + 1;
         boxes.stream()
                 .filter(box -> box.size <= limit && box.size >= limit)
                 .map(Box::getItems)
