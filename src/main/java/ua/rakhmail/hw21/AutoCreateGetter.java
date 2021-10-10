@@ -15,7 +15,8 @@ public class AutoCreateGetter {
             Class<?> clazz = map.get(str);
             try {
                 Method method = clazz.getMethod("printFields");
-                System.out.println(" methor " + clazz + method);
+                if (method.isAnnotationPresent(Init.class))
+                    System.out.println(" methor " + clazz + method);
                 Object sad = clazz.newInstance();
                 if (sad instanceof Box) {
                     Box box = new Box();
@@ -81,7 +82,7 @@ public class AutoCreateGetter {
             } else if (file.getName().endsWith(".class")) {
                 try {
                     Class<?> clas = Class.forName(packageName + '.' + file.getName().substring(0, file.getName().length() - 6));
-                   changeFieldWithMultiplier(clas);
+                    changeFieldWithMultiplier(clas);
                     classes.add(clas);
                 } catch (ClassNotFoundException e) {
                     System.out.println(e.getMessage());
@@ -97,12 +98,14 @@ public class AutoCreateGetter {
             if (box instanceof Box) {
                 box = new Box();
                 Field sizeField = clas.getDeclaredField("size");
-                double doubleSize = sizeField.getDouble(box);
-                System.out.println("Before change " + clas + " size = " + doubleSize);
-                sizeField.setAccessible(true);
-                sizeField.setDouble(box, doubleSize * 2);
-                double newSize = sizeField.getDouble(box);
-                System.out.println("After change " + clas + " size = " + newSize);
+                if (sizeField.isAnnotationPresent(Multiplier.class)) {
+                    double doubleSize = sizeField.getDouble(box);
+                    System.out.println("Before change " + clas + " size = " + doubleSize);
+                    sizeField.setAccessible(true);
+                    sizeField.setDouble(box, doubleSize * 2);
+                    double newSize = sizeField.getDouble(box);
+                    System.out.println("After change " + clas + " size = " + newSize);
+                }
             }
         } catch (NoSuchFieldException | IllegalAccessException | InstantiationException e) {
             e.printStackTrace();
