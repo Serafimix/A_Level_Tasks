@@ -82,7 +82,7 @@ public class AutoCreateGetter {
             } else if (file.getName().endsWith(".class")) {
                 try {
                     Class<?> clas = Class.forName(packageName + '.' + file.getName().substring(0, file.getName().length() - 6));
-                    changeFieldWithMultiplier(clas);
+//                    changeFieldWithMultiplier(clas);
                     classes.add(clas);
                 } catch (ClassNotFoundException e) {
                     System.out.println(e.getMessage());
