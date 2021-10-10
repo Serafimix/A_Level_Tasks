@@ -2,6 +2,7 @@ package ua.rakhmail.hw21;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -16,7 +17,7 @@ public class AutoCreateGetter {
                 Method method = clazz.getMethod("printFields");
                 System.out.println(" methor " + clazz + method);
                 Object sad = clazz.newInstance();
-                if (sad instanceof Box){
+                if (sad instanceof Box) {
                     Box box = new Box();
                     box.printFields();
                 }
@@ -79,7 +80,7 @@ public class AutoCreateGetter {
             } else if (file.getName().endsWith(".class")) {
                 try {
                     Class<?> clas = Class.forName(packageName + '.' + file.getName().substring(0, file.getName().length() - 6));
-//                    clas = changeFieldWithMultiplier(clas);
+//                   changeFieldWithMultiplier(clas);
                     classes.add(clas);
                 } catch (ClassNotFoundException e) {
                     System.out.println(e.getMessage());
@@ -89,18 +90,21 @@ public class AutoCreateGetter {
         return classes;
     }
 
-    private static Class<?> changeFieldWithMultiplier(Class<?> clas) {
-//        try {
-//            Object box = clas.newInstance();
-//
-//            Field sizeField = clas.getDeclaredField("size");
-//            sizeField.setAccessible(true);
-//            sizeField.setDouble();
-//        } catch (NoSuchFieldException e) {
-//            e.printStackTrace();
-//        }
-
-
-        return clas;
+    private static void changeFieldWithMultiplier(Class<?> clas) {
+        try {
+            Object box = clas.newInstance();
+            if (box instanceof Box) {
+                box = new Box();
+                Field sizeField = clas.getDeclaredField("size");
+                double doubleSize = sizeField.getDouble(box);
+                System.out.println("Before change " + clas + " size = " + doubleSize);
+                sizeField.setAccessible(true);
+                sizeField.setDouble(box, doubleSize * 2);
+                double newSize = sizeField.getDouble(box);
+                System.out.println("After change " + clas + " size = " + newSize);
+            }
+        } catch (NoSuchFieldException | IllegalAccessException | InstantiationException e) {
+            e.printStackTrace();
+        }
     }
 }
