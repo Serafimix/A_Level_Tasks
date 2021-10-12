@@ -9,7 +9,7 @@ public class Box {
     private final Integer weight = 2;
 
     @Init
-    public void printFields(){
+    public void printFields() {
         System.out.println(name + ", size= " + size + " weight= " + weight);
     }
 }

@@ -3,6 +3,7 @@ package ua.rakhmail.hw21;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -16,20 +17,14 @@ public class AutoCreateGetter {
             try {
                 Method method = clazz.getMethod("printFields");
                 if (method.isAnnotationPresent(Init.class))
-                    System.out.println(" methor " + clazz + method);
+                    System.out.println(" method " + clazz + method);
                 Object sad = clazz.newInstance();
-                if (sad instanceof Box) {
-                    Box box = new Box();
-                    box.printFields();
-                }
-            } catch (NoSuchMethodException | InstantiationException | IllegalAccessException e) {
+                method.invoke(sad);
+            } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
                 e.printStackTrace();
             }
         }
-
-
     }
-
 
     public static Map<String, Class<?>> getMap() {
         Map<String, Class<?>> classMap = new HashMap<>();
@@ -82,7 +77,6 @@ public class AutoCreateGetter {
             } else if (file.getName().endsWith(".class")) {
                 try {
                     Class<?> clas = Class.forName(packageName + '.' + file.getName().substring(0, file.getName().length() - 6));
-//                    changeFieldWithMultiplier(clas);
                     classes.add(clas);
                 } catch (ClassNotFoundException e) {
                     System.out.println(e.getMessage());
@@ -95,19 +89,16 @@ public class AutoCreateGetter {
     private static void changeFieldWithMultiplier(Class<?> clas) {
         try {
             Object box = clas.newInstance();
-            if (box instanceof Box) {
-                box = new Box();
-                Field sizeField = clas.getDeclaredField("size");
-                if (sizeField.isAnnotationPresent(Multiplier.class)) {
-                    double doubleSize = sizeField.getDouble(box);
-                    System.out.println("Before change " + clas + " size = " + doubleSize);
+            Field[] fields = clas.getDeclaredFields();
+            for (var sizeField : fields) {
+                if (sizeField.isAnnotationPresent(Multiplier.class) && (sizeField.get(box) instanceof Number)) {
+                    System.out.println("Before change " + clas + " size = " + sizeField.get(box));
                     sizeField.setAccessible(true);
-                    sizeField.setDouble(box, doubleSize * 2);
-                    double newSize = sizeField.getDouble(box);
-                    System.out.println("After change " + clas + " size = " + newSize);
+                    sizeField.set(box, (((Number) sizeField.get(box)).doubleValue()) * 2);
+                    System.out.println("After change " + clas + " size = " + sizeField.get(box));
                 }
             }
-        } catch (NoSuchFieldException | IllegalAccessException | InstantiationException e) {
+        } catch (IllegalAccessException | InstantiationException e) {
             e.printStackTrace();
         }
     }
