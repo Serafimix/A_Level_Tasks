@@ -53,7 +53,10 @@ public class TechniqueDao {
     }
 
     public List<Technique> findAll() {
-        List<Technique> techniques = (List<Technique>)  HibernateUtil.getSessionFactory().openSession().createQuery("From technique").list();
-        return techniques;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            return session.createQuery(
+                    "SELECT t FROM Technique t", Technique.class
+            ).list();
+        }
     }
 }
