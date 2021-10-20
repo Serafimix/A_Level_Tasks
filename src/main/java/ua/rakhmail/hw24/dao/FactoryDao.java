@@ -7,7 +7,9 @@ import ua.rakhmail.hw24.util.HibernateUtil;
 import ua.rakhmail.hw24.models.Factory;
 import ua.rakhmail.hw24.models.Technique;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class FactoryDao {
     public Factory findById(int id) {
@@ -50,17 +52,8 @@ public class FactoryDao {
         }
     }
 
-    public Factory findFactoryById(int id) {
-        Factory factory;
-
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            factory = session.createQuery("SELECT f FROM factory f WHERE f.id = :id",
-                            Factory.class)
-                    .setParameter("id", id)
-                    .stream().findFirst().orElse(null);
-        }
-
-        return factory;
+    public Set<Technique> findTechniquesByFactoryID(int id) {
+        return null;
     }
 
     public List<Factory> findAll() {
