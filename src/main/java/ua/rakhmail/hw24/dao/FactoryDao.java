@@ -37,8 +37,17 @@ public class FactoryDao {
         session.close();
     }
 
-    public Technique findFactoryById(int id) {
-        return HibernateUtil.getSessionFactory().openSession().get(Technique.class, id);
+    public Factory findFactoryById(int id) {
+        Factory factory;
+
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            factory = session.createQuery("SELECT f FROM factory f WHERE f.id = :id",
+                            Factory.class)
+                    .setParameter("id", id)
+                    .stream().findFirst().orElse(null);
+        }
+
+        return factory;
     }
 
     public List<Factory> findAll() {

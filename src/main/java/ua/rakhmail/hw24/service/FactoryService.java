@@ -32,7 +32,7 @@ public class FactoryService {
         return factoryDao.findAll();
     }
 
-    public Technique findTechniqueById(int id) {
+    public Factory findFactoryFromID(int id) {
         return factoryDao.findFactoryById(id);
     }
 

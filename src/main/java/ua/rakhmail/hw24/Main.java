@@ -9,19 +9,18 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class Main {
-    public static void main(String[] args) throws SQLException {
-        FactoryService factoryService = new FactoryService();
-        TechniqueService techniqueService = new TechniqueService();
-        createTenTechniquesAnd4factory();
+    private static final FactoryService factoryService = new FactoryService();
+    private static final TechniqueService techniqueService = new TechniqueService();
 
+    public static void main(String[] args) throws SQLException {
+        createTenTechniquesAnd4factory();
+//        System.out.println(factoryService.findFactoryFromID(2));
     }
 
 
 
 
     public static void createTenTechniquesAnd4factory(){
-        FactoryService factoryService = new FactoryService();
-        TechniqueService techniqueService = new TechniqueService();
         Factory factory1 = new Factory("Factory1", "USA");
         Factory factory2 = new Factory("Factory2", "China");
         Factory factory3 = new Factory("Factory3", "UK");
