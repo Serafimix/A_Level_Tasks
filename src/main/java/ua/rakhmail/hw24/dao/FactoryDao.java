@@ -56,6 +56,11 @@ public class FactoryDao {
         return null;
     }
 
+    public void getInfoCountForAllTechniquesFromAllFactories() {
+//        SELECT fk_factory , COUNT(*) AS Allcount, SUM(price)" +
+//        " AS AllPrice FROM technique GROUP BY fk_factory ORDER BY fk_factory"
+    }
+
     public List<Factory> findAll() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             return session.createQuery(
