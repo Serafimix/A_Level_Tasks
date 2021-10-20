@@ -59,4 +59,13 @@ public class TechniqueDao {
             ).list();
         }
     }
+    public void findTechniquesByFactoryID(int id) {
+//        SELECT technique.*, factory.* FROM technique
+//        INNER JOIN factory ON factory.id = factory_id WHERE factory.id = :id ORDER BY technique.id;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Query query = session.createQuery("FROM Technique t WHERE t.factory_id = :id");
+            List techniques = query.list();
+            techniques.forEach(System.out::println);
+        }
+    }
 }

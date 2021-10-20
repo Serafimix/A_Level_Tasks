@@ -37,4 +37,8 @@ public class TechniqueService {
         return techniqueDao.findFactoryById(id);
     }
 
+    public void getTechniquesFromFactoryId(int id){
+        techniqueDao.findTechniquesByFactoryID(id);
+    }
+
 }

@@ -31,8 +31,8 @@ public class Main {
 
         Factory factory = factoryService.findFactoryById(2);
         //почему так не работает?
-        factory.getTechniques().forEach(System.out::println);
-
+//        factory.getTechniques().forEach(System.out::println);
+//        techniqueService.getTechniquesFromFactoryId(2);
     }
 
 
