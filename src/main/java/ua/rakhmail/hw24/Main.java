@@ -27,6 +27,8 @@ public class Main {
         techniqueService.deleteTechnique(5);
         System.out.println(techniqueService.findTechniqueById(5));
         System.out.println(decor + "getAllTechnique from factory #2");
+
+
         Factory factory = factoryService.findFactoryById(2);
         //почему так не работает?
         factory.getTechniques().forEach(System.out::println);
