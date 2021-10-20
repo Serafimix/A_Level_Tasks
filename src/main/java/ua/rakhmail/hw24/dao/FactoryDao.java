@@ -2,6 +2,7 @@ package ua.rakhmail.hw24.dao;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import ua.rakhmail.hw24.util.HibernateUtil;
 import ua.rakhmail.hw24.models.Factory;
 import ua.rakhmail.hw24.models.Technique;
@@ -10,7 +11,16 @@ import java.util.List;
 
 public class FactoryDao {
     public Factory findById(int id) {
-        return HibernateUtil.getSessionFactory().openSession().get(Factory.class, id);
+        Factory factory;
+
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            factory = session.createQuery("SELECT f FROM factory f WHERE f.id = :id",
+                            Factory.class)
+                    .setParameter("id", id)
+                    .stream().findFirst().orElse(null);
+        }
+
+        return factory;
     }
 
     public void save(Factory factory) {
@@ -29,12 +39,15 @@ public class FactoryDao {
         session.close();
     }
 
-    public void delete(Factory factory) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
-        session.delete(factory);
-        tx1.commit();
-        session.close();
+    public void deleteByID(int id) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+            Query query = session.createQuery(
+                            "DELETE FROM factory f WHERE f.id = :id")
+                    .setParameter("id", id);
+            query.executeUpdate();
+            transaction.commit();
+        }
     }
 
     public Factory findFactoryById(int id) {
@@ -51,7 +64,10 @@ public class FactoryDao {
     }
 
     public List<Factory> findAll() {
-        List<Factory> factories = (List<Factory>)  HibernateUtil.getSessionFactory().openSession().createQuery("From factory").list();
-        return factories;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            return session.createQuery(
+                    "SELECT f FROM factory f", Factory.class
+            ).list();
+        }
     }
 }

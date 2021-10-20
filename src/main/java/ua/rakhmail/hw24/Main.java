@@ -14,11 +14,8 @@ public class Main {
 
     public static void main(String[] args) throws SQLException {
         createTenTechniquesAnd4factory();
-//        System.out.println(factoryService.findFactoryFromID(2));
+        System.out.println(techniqueService.findTechniqueById(1));
     }
-
-
-
 
     public static void createTenTechniquesAnd4factory(){
         Factory factory1 = new Factory("Factory1", "USA");

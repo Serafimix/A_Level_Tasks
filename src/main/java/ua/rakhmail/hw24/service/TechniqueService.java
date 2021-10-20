@@ -21,8 +21,8 @@ public class TechniqueService {
         techniqueDao.save(technique);
     }
 
-    public void deleteTechnique(Technique technique) {
-        techniqueDao.delete(technique);
+    public void deleteTechnique(int id) {
+        techniqueDao.delete(id);
     }
 
     public void updateTechnique(Technique technique) {

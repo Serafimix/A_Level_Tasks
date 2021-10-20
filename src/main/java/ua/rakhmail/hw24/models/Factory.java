@@ -20,7 +20,6 @@ public class Factory {
     private String name;
     private String country;
     @OneToMany(mappedBy = "factory")
-//    @JoinColumn(name = "technique_id")
     private Set<Technique> techniques;
 
     public Factory(String name, String country) {

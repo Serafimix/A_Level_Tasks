@@ -26,7 +26,7 @@ public class Technique {
     @Lob
     private String description;
     @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "factory_id")
+    @JoinColumn(name = "factory_id")
     private Factory factory;
 
     public Technique(String type, String model, int price, String date, String description, Factory factory) {

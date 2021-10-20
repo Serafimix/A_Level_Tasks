@@ -20,8 +20,8 @@ public class FactoryService {
         factoryDao.save(factory);
     }
 
-    public void deleteFactory(Factory factory) {
-        factoryDao.delete(factory);
+    public void deleteFactory(int id) {
+        factoryDao.deleteByID(id);
     }
 
     public void updateFactory(Factory factory) {
