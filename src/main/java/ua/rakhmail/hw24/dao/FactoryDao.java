@@ -7,14 +7,13 @@ import ua.rakhmail.hw24.util.HibernateUtil;
 import ua.rakhmail.hw24.models.Factory;
 import ua.rakhmail.hw24.models.Technique;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class FactoryDao {
     public Factory findById(int id) {
         Factory factory;
-
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             factory = session.createQuery("SELECT f FROM Factory f WHERE f.id = :id",
                             Factory.class)
@@ -52,6 +51,8 @@ public class FactoryDao {
     }
 
     public Set<Technique> findTechniquesByFactoryID(int id) {
+//        SELECT technique.*, factory.* FROM technique
+//        INNER JOIN factory ON factory.id = factory_id WHERE factory.id = :id ORDER BY technique.id;
         return null;
     }
 

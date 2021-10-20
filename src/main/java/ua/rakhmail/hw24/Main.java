@@ -13,11 +13,30 @@ public class Main {
     private static final TechniqueService techniqueService = new TechniqueService();
 
     public static void main(String[] args) throws SQLException {
-        createTenTechniquesAnd4factory();
+        createTenTechniquesAndFourfactory();
         System.out.println(factoryService.findFactoryById(1));
+
     }
 
-    public static void createTenTechniquesAnd4factory(){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public static void createTenTechniquesAndFourfactory(){
         Factory factory1 = new Factory("Factory1", "USA");
         Factory factory2 = new Factory("Factory2", "China");
         Factory factory3 = new Factory("Factory3", "UK");
