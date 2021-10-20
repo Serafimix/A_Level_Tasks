@@ -1,22 +1,20 @@
 package ua.rakhmail.hw24;
 
-import ua.rakhmail.hw24.services.FactoryHService;
-import ua.rakhmail.hw24.services.TechniqueHService;
+import ua.rakhmail.hw24.models.Factory;
+import ua.rakhmail.hw24.models.Technique;
+import ua.rakhmail.hw24.service.FactoryService;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.sql.SQLException;
 
 public class Main {
-    private static final TechniqueHService TECHNIQUE_H_SERVICE = new TechniqueHService();
-    private static final FactoryHService FACTORY_H_SERVICE = new FactoryHService();
-
-    private static final Map<String, String> MAPS_OF_TECHNIQUE = new HashMap<>();
-    private static final Map<String, String> MAPS_OF_FACTORIES = new HashMap<>();
-
-    public static void main(String[] args) {
-        final String guid = FACTORY_H_SERVICE.save("Factorio", "USA");
-        MAPS_OF_FACTORIES.put("Factorio", guid);
+    public static void main(String[] args) throws SQLException {
+        FactoryService factoryService = new FactoryService();
+        Factory factory = new Factory();
+        factory.setName("asd");
+        factory.setCountry("USA");
+        factoryService.saveFactory(factory);
+        Technique technique = new Technique();
+        technique.setFactory(factory);
+        factory.getTechniques().add(technique);
     }
 }
