@@ -20,12 +20,14 @@ public class Technique {
     private int id;
     private String type;
     private String model;
+    private boolean isHave;
     private int price;
     @Temporal(TemporalType.DATE)
     private Date date;
     @Lob
     private String description;
-    @ManyToOne(fetch = FetchType.LAZY)
+//    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "factory_id")
     private Factory factory;
 

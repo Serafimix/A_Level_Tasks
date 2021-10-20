@@ -11,32 +11,27 @@ import java.time.LocalDate;
 public class Main {
     private static final FactoryService factoryService = new FactoryService();
     private static final TechniqueService techniqueService = new TechniqueService();
+    private static final String decor = "**************************************************************************" +
+            "***************" + System.lineSeparator();
 
     public static void main(String[] args) throws SQLException {
         createTenTechniquesAndFourfactory();
-        System.out.println(factoryService.findFactoryById(1));
+        System.out.println(decor + "Get Info for Technique and his Factory #5");
+        System.out.println(techniqueService.findTechniqueById(5));
+        Technique technique = techniqueService.findTechniqueById(5);
+        technique.setHave(true);
+        techniqueService.updateTechnique(technique);
+        System.out.println(decor + "Change isHaving for technique #5" + System.lineSeparator()
+                + techniqueService.findTechniqueById(5));
+        System.out.println(decor + "Delete technique from ID 5");
+        techniqueService.deleteTechnique(5);
+        System.out.println(techniqueService.findTechniqueById(5));
+
 
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public static void createTenTechniquesAndFourfactory(){
+    public static void createTenTechniquesAndFourfactory() {
         Factory factory1 = new Factory("Factory1", "USA");
         Factory factory2 = new Factory("Factory2", "China");
         Factory factory3 = new Factory("Factory3", "UK");
