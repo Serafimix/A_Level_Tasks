@@ -12,7 +12,7 @@ public class FactoryService {
     public FactoryService() {
     }
 
-    public Factory findUser(int id) {
+    public Factory findFactoryById(int id) {
         return factoryDao.findById(id);
     }
 
@@ -31,9 +31,4 @@ public class FactoryService {
     public List<Factory> findAllFactories() {
         return factoryDao.findAll();
     }
-
-    public Factory findFactoryFromID(int id) {
-        return factoryDao.findFactoryById(id);
-    }
-
 }

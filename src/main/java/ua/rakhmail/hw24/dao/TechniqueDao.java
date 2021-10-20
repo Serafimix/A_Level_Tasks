@@ -13,7 +13,7 @@ public class TechniqueDao {
     public Technique findById(int id) {
         Technique technique;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            technique = session.createQuery("SELECT t FROM technique t WHERE t.id = :id",
+            technique = session.createQuery("SELECT t FROM Technique t WHERE t.id = :id",
                             Technique.class)
                     .setParameter("id", id)
                     .stream().findFirst().orElse(null);
@@ -41,7 +41,7 @@ public class TechniqueDao {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
             Query query = session.createQuery(
-                            "DELETE FROM technique t WHERE t.id = :id")
+                            "DELETE FROM Technique t WHERE t.id = :id")
                     .setParameter("id", id);
             query.executeUpdate();
             transaction.commit();

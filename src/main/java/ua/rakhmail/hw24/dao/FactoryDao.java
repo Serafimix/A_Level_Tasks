@@ -16,12 +16,11 @@ public class FactoryDao {
         Factory factory;
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            factory = session.createQuery("SELECT f FROM factory f WHERE f.id = :id",
+            factory = session.createQuery("SELECT f FROM Factory f WHERE f.id = :id",
                             Factory.class)
                     .setParameter("id", id)
                     .stream().findFirst().orElse(null);
         }
-
         return factory;
     }
 
@@ -45,7 +44,7 @@ public class FactoryDao {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
             Query query = session.createQuery(
-                            "DELETE FROM factory f WHERE f.id = :id")
+                            "DELETE FROM Factory f WHERE f.id = :id")
                     .setParameter("id", id);
             query.executeUpdate();
             transaction.commit();
@@ -59,7 +58,7 @@ public class FactoryDao {
     public List<Factory> findAll() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             return session.createQuery(
-                    "SELECT f FROM factory f", Factory.class
+                    "SELECT f FROM Factory f", Factory.class
             ).list();
         }
     }

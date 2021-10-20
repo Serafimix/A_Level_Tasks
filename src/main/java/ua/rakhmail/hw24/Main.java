@@ -14,7 +14,7 @@ public class Main {
 
     public static void main(String[] args) throws SQLException {
         createTenTechniquesAnd4factory();
-//        System.out.println(techniqueService.findTechniqueById(1));
+        System.out.println(factoryService.findFactoryById(1));
     }
 
     public static void createTenTechniquesAnd4factory(){
