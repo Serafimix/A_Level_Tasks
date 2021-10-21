@@ -7,6 +7,8 @@ import ua.rakhmail.hw24.util.HibernateUtil;
 import ua.rakhmail.hw24.models.Factory;
 import ua.rakhmail.hw24.models.Technique;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -53,6 +55,12 @@ public class FactoryDao {
     public void getInfoCountForAllTechniquesFromAllFactories() {
 //        SELECT technique.factory_id , COUNT(*) AS Allcount, SUM(price)
 //        AS AllPrice FROM technique GROUP BY technique.factory_id ORDER BY technique.factory_id
+        List<Factory> factories = new ArrayList<>();
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            factories = session.createQuery("SELECT technique.factory_id , COUNT(*) AS Allcount, SUM(price) " +
+                    "AS AllPrice FROM technique GROUP BY technique.factory_id ORDER BY technique.factory_id", Factory.class).list();
+            factories.forEach(System.out::println);
+        }
     }
 
     public List<Factory> findAll() {

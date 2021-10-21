@@ -31,4 +31,8 @@ public class FactoryService {
     public List<Factory> findAllFactories() {
         return factoryDao.findAll();
     }
+
+    public void getCountAndSumFromAllFactories() {
+        factoryDao.getInfoCountForAllTechniquesFromAllFactories();
+    }
 }

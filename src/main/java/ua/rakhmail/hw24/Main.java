@@ -29,12 +29,15 @@ public class Main {
         System.out.println(decor + "Delete technique from ID 5");
         techniqueService.deleteTechnique(5);
         System.out.println(techniqueService.findTechniqueById(5));
-        System.out.println(decor + "getAllTechnique from factory #2");
+        System.out.println(decor + "GetAllTechnique from factory #2");
 
         Factory factory = factoryService.findFactoryById(2);
         //почему так не работает?
 //        factory.getTechniques().forEach(System.out::println);
         techniqueService.getTechniquesFromFactoryId(2);
+
+        System.out.println(decor + "Get count and Sum of prices from all Factories");
+        factoryService.getCountAndSumFromAllFactories();
 
 
     }
