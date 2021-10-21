@@ -16,6 +16,8 @@ public class Main {
 
     public static void main(String[] args) throws SQLException {
         createTenTechniquesAndFourfactory();
+        System.out.println(factoryService.findAllFactories());
+        System.out.println(techniqueService.findAllTechniques());
         System.out.println(decor + "Get Info for Technique and his Factory #5");
         System.out.println(techniqueService.findTechniqueById(5));
         Technique technique = techniqueService.findTechniqueById(5);
@@ -33,6 +35,8 @@ public class Main {
         //почему так не работает?
 //        factory.getTechniques().forEach(System.out::println);
         techniqueService.getTechniquesFromFactoryId(2);
+
+
     }
 
 
