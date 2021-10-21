@@ -7,6 +7,7 @@ import ua.rakhmail.hw24.service.TechniqueService;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.List;
 
 public class Main {
     private static final FactoryService factoryService = new FactoryService();

@@ -7,6 +7,7 @@ import ua.rakhmail.hw24.models.Factory;
 import ua.rakhmail.hw24.models.Technique;
 import ua.rakhmail.hw24.util.HibernateUtil;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class TechniqueDao {
@@ -62,9 +63,9 @@ public class TechniqueDao {
     public void findTechniquesByFactoryID(int id) {
 //        SELECT technique.*, factory.* FROM technique
 //        INNER JOIN factory ON factory.id = factory_id WHERE factory.id = :id ORDER BY technique.id;
+        List<Technique> techniques = new LinkedList<>();
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            Query<Technique> query = session.createQuery("SELECT t FROM Technique t WHERE t.factory_id = :id", Technique.class).setParameter("id", id);
-            List<Technique> techniques = query.list();
+            techniques = session.createQuery("SELECT t FROM Technique t WHERE t.factory = "+ id, Technique.class).list();
             techniques.forEach(System.out::println);
         }
     }

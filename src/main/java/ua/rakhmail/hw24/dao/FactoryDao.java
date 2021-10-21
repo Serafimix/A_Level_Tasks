@@ -50,12 +50,6 @@ public class FactoryDao {
         }
     }
 
-    public Set<Technique> findTechniquesByFactoryID(int id) {
-//        SELECT technique.*, factory.* FROM technique
-//        INNER JOIN factory ON factory.id = factory_id WHERE factory.id = :id ORDER BY technique.id;
-        return null;
-    }
-
     public void getInfoCountForAllTechniquesFromAllFactories() {
 //        SELECT fk_factory , COUNT(*) AS Allcount, SUM(price)" +
 //        " AS AllPrice FROM technique GROUP BY fk_factory ORDER BY fk_factory"
