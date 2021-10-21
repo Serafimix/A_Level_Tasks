@@ -51,8 +51,8 @@ public class FactoryDao {
     }
 
     public void getInfoCountForAllTechniquesFromAllFactories() {
-//        SELECT fk_factory , COUNT(*) AS Allcount, SUM(price)" +
-//        " AS AllPrice FROM technique GROUP BY fk_factory ORDER BY fk_factory"
+//        SELECT technique.factory_id , COUNT(*) AS Allcount, SUM(price)
+//        AS AllPrice FROM technique GROUP BY technique.factory_id ORDER BY technique.factory_id
     }
 
     public List<Factory> findAll() {
