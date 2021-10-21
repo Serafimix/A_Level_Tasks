@@ -63,8 +63,8 @@ public class TechniqueDao {
 //        SELECT technique.*, factory.* FROM technique
 //        INNER JOIN factory ON factory.id = factory_id WHERE factory.id = :id ORDER BY technique.id;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            Query query = session.createQuery("SELECT t FROM Technique t WHERE t.factory_id = :id", Technique.class).setParameter("id", id);
-            List techniques = query.list();
+            Query<Technique> query = session.createQuery("SELECT t FROM Technique t WHERE t.factory_id = :id", Technique.class).setParameter("id", id);
+            List<Technique> techniques = query.list();
             techniques.forEach(System.out::println);
         }
     }
