@@ -5,13 +5,9 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import ua.rakhmail.hw24.util.HibernateUtil;
 import ua.rakhmail.hw24.models.Factory;
-import ua.rakhmail.hw24.models.Technique;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 public class FactoryDao {
     public Factory findById(int id) {
@@ -26,19 +22,19 @@ public class FactoryDao {
     }
 
     public void save(Factory factory) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
-        session.save(factory);
-        tx1.commit();
-        session.close();
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Transaction tx1 = session.beginTransaction();
+            session.save(factory);
+            tx1.commit();
+        }
     }
 
     public void update(Factory factory) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
-        session.update(factory);
-        tx1.commit();
-        session.close();
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Transaction tx1 = session.beginTransaction();
+            session.update(factory);
+            tx1.commit();
+        }
     }
 
     public void deleteByID(int id) {
@@ -57,8 +53,8 @@ public class FactoryDao {
 //        AS AllPrice FROM technique GROUP BY technique.factory_id ORDER BY technique.factory_id
         List<Factory> factories = new ArrayList<>();
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            factories = session.createQuery("SELECT technique.factory_id , COUNT(*) AS Allcount, SUM(price) " +
-                    "AS AllPrice FROM technique GROUP BY technique.factory_id ORDER BY technique.factory_id", Factory.class).list();
+            factories = session.createQuery("SELECT Technique.factory , COUNT(*) AS Allcount, SUM(price) " +
+                    "AS AllPrice FROM Technique GROUP BY Technique.factory ORDER BY Technique.factory", Factory.class).list();
             factories.forEach(System.out::println);
         }
     }

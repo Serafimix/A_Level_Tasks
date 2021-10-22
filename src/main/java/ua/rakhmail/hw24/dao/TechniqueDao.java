@@ -23,19 +23,19 @@ public class TechniqueDao {
     }
 
     public void save(Technique technique) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
-        session.save(technique);
-        tx1.commit();
-        session.close();
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Transaction tx1 = session.beginTransaction();
+            session.save(technique);
+            tx1.commit();
+        }
     }
 
     public void update(Technique technique) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
-        session.update(technique);
-        tx1.commit();
-        session.close();
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Transaction tx1 = session.beginTransaction();
+            session.update(technique);
+            tx1.commit();
+        }
     }
 
     public void delete(int id) {
@@ -60,12 +60,11 @@ public class TechniqueDao {
             ).list();
         }
     }
+
     public void findTechniquesByFactoryID(int id) {
-//        SELECT technique.*, factory.* FROM technique
-//        INNER JOIN factory ON factory.id = factory_id WHERE factory.id = :id ORDER BY technique.id;
         List<Technique> techniques = new LinkedList<>();
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            techniques = session.createQuery("SELECT t FROM Technique t WHERE t.factory = "+ id, Technique.class).list();
+            techniques = session.createQuery("SELECT t FROM Technique t WHERE t.factory = " + id, Technique.class).list();
             techniques.forEach(System.out::println);
         }
     }

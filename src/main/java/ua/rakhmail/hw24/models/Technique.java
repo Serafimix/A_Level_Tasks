@@ -26,8 +26,8 @@ public class Technique {
     private Date date;
     @Lob
     private String description;
-//    @ManyToOne(fetch = FetchType.LAZY)
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
+//    @ManyToOne
     @JoinColumn(name = "factory_id")
     private Factory factory;
 

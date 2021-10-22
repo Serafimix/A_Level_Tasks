@@ -1,6 +1,5 @@
 package ua.rakhmail.hw24.service;
 
-import ua.rakhmail.hw24.dao.FactoryDao;
 import ua.rakhmail.hw24.dao.TechniqueDao;
 import ua.rakhmail.hw24.models.Factory;
 import ua.rakhmail.hw24.models.Technique;

@@ -37,7 +37,7 @@ public class Main {
         techniqueService.getTechniquesFromFactoryId(2);
 
         System.out.println(decor + "Get count and Sum of prices from all Factories");
-        factoryService.getCountAndSumFromAllFactories();
+//        factoryService.getCountAndSumFromAllFactories();
 
 
     }
