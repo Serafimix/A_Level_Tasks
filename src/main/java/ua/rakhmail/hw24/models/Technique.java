@@ -27,7 +27,6 @@ public class Technique {
     @Lob
     private String description;
     @ManyToOne(fetch = FetchType.EAGER)
-//    @ManyToOne
     @JoinColumn(name = "factory_id")
     private Factory factory;
 

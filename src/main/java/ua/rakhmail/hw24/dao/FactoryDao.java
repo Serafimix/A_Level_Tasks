@@ -3,10 +3,11 @@ package ua.rakhmail.hw24.dao;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import ua.rakhmail.hw23.DBInfo;
 import ua.rakhmail.hw24.util.HibernateUtil;
 import ua.rakhmail.hw24.models.Factory;
 
-import java.util.ArrayList;
+import java.sql.*;
 import java.util.List;
 
 public class FactoryDao {
@@ -49,13 +50,21 @@ public class FactoryDao {
     }
 
     public void getInfoCountForAllTechniquesFromAllFactories() {
-//        SELECT technique.factory_id , COUNT(*) AS Allcount, SUM(price)
-//        AS AllPrice FROM technique GROUP BY technique.factory_id ORDER BY technique.factory_id
-        List<Factory> factories = new ArrayList<>();
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            factories = session.createQuery("SELECT Technique.factory , COUNT(*) AS Allcount, SUM(price) " +
-                    "AS AllPrice FROM Technique GROUP BY Technique.factory ORDER BY Technique.factory", Factory.class).list();
-            factories.forEach(System.out::println);
+        String sql = "SELECT technique.factory_id , COUNT(*) AS Allcount, SUM(price) " +
+                "AS AllPrice FROM technique GROUP BY technique.factory_id ORDER BY technique.factory_id";
+        try (Connection connection = DBInfo.getConn();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(sql)) {
+            int columns = resultSet.getMetaData().getColumnCount();
+            System.out.println("#Factory = count   =   prices");
+            while (resultSet.next()) {
+                for (int i = 1; i <= columns; i++) {
+                    System.out.print(resultSet.getString(i) + "\t\t\t");
+                }
+                System.out.println();
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
     }
 
