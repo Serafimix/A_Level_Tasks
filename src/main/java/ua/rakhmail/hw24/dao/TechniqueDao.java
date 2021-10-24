@@ -18,6 +18,9 @@ public class TechniqueDao {
                             Technique.class)
                     .setParameter("id", id)
                     .stream().findFirst().orElse(null);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
         }
         return technique;
     }
@@ -27,6 +30,8 @@ public class TechniqueDao {
             Transaction tx1 = session.beginTransaction();
             session.save(technique);
             tx1.commit();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -35,17 +40,25 @@ public class TechniqueDao {
             Transaction tx1 = session.beginTransaction();
             session.update(technique);
             tx1.commit();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 
     public void delete(int id) {
+        Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            Transaction transaction = session.beginTransaction();
+            transaction = session.beginTransaction();
             Query query = session.createQuery(
                             "DELETE FROM Technique t WHERE t.id = :id")
                     .setParameter("id", id);
             query.executeUpdate();
             transaction.commit();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            if (transaction != null) {
+                transaction.rollback();
+            }
         }
     }
 
@@ -58,6 +71,9 @@ public class TechniqueDao {
             return session.createQuery(
                     "SELECT t FROM Technique t", Technique.class
             ).list();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
         }
     }
 
@@ -66,6 +82,8 @@ public class TechniqueDao {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             techniques = session.createQuery("SELECT t FROM Technique t WHERE t.factory = " + id, Technique.class).list();
             techniques.forEach(System.out::println);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 }

@@ -18,8 +18,11 @@ public class FactoryDao {
                             Factory.class)
                     .setParameter("id", id)
                     .stream().findFirst().orElse(null);
+            return factory;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-        return factory;
+        return null;
     }
 
     public void save(Factory factory) {
@@ -27,6 +30,8 @@ public class FactoryDao {
             Transaction tx1 = session.beginTransaction();
             session.save(factory);
             tx1.commit();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -35,6 +40,8 @@ public class FactoryDao {
             Transaction tx1 = session.beginTransaction();
             session.update(factory);
             tx1.commit();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -79,6 +86,9 @@ public class FactoryDao {
             return session.createQuery(
                     "SELECT f FROM Factory f", Factory.class
             ).list();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
         }
     }
 }
