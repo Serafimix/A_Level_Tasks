@@ -50,8 +50,8 @@ public class FactoryDao {
     }
 
     public void getInfoCountForAllTechniquesFromAllFactories() {
-        String sql = "SELECT technique.factory_id , COUNT(*) AS Allcount, SUM(price) " +
-                "AS AllPrice FROM technique GROUP BY technique.factory_id ORDER BY technique.factory_id";
+        String sql = "SELECT factory_id , COUNT(*) AS Allcount, SUM(price) " +
+                "AS AllPrice FROM Technique t GROUP BY t.factory_id ORDER BY t.factory_id";
         try (Connection connection = DBInfo.getConn();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(sql)) {
