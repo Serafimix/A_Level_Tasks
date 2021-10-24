@@ -47,19 +47,19 @@ public class Main {
         factoryService.saveFactory(factory3);
         factoryService.saveFactory(factory4);
 
-        Technique technique1 = new Technique("telephone", "LG150", 450, "2012-02-13", "some text1", factory1);
+        Technique technique1 = new Technique("telephone", "LG150", 300, "2012-02-13", "some text1", factory1);
         techniqueService.saveTechnique(technique1);
-        Technique technique2 = new Technique("television", "AOC32", 500, "2011-03-15", "some text2", factory2);
+        Technique technique2 = new Technique("television", "AOC32", 700, "2011-03-15", "some text2", factory2);
         techniqueService.saveTechnique(technique2);
-        Technique technique3 = new Technique("telephone", "iPhone10", 1000, "2010-04-21", "some text3", factory3);
+        Technique technique3 = new Technique("telephone", "iPhone10", 600, "2010-04-21", "some text3", factory3);
         techniqueService.saveTechnique(technique3);
-        Technique technique4 = new Technique("television", "Berezka", 300, "1994-05-22", "some text4", factory4);
+        Technique technique4 = new Technique("television", "Berezka", 250, "1994-05-22", "some text4", factory4);
         techniqueService.saveTechnique(technique4);
-        Technique technique5 = new Technique("telephone", "Nokian73Me", 200, "2018-06-24", "some text5", factory1);
+        Technique technique5 = new Technique("telephone", "Nokian73Me", 400, "2018-06-24", "some text5", factory1);
         techniqueService.saveTechnique(technique5);
-        Technique technique6 = new Technique("television", "SAMSUNGWatch", 600, "2011-07-11", "some text6", factory2);
+        Technique technique6 = new Technique("television", "SAMSUNGWatch", 1111, "2011-07-11", "some text6", factory2);
         techniqueService.saveTechnique(technique6);
-        Technique technique7 = new Technique("telephone", "SiemensA50", 100, "2013-08-01", "some text7", factory3);
+        Technique technique7 = new Technique("telephone", "SiemensA50", 120, "2013-08-01", "some text7", factory3);
         techniqueService.saveTechnique(technique7);
         Technique technique8 = new Technique("television", "iWatchPro", 1100, "2018-09-14", "some text8", factory4);
         techniqueService.saveTechnique(technique8);
