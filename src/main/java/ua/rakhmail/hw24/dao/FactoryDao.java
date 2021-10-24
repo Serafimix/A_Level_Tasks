@@ -53,9 +53,9 @@ public class FactoryDao {
         String sql = "SELECT factory_id , COUNT(*) AS AllCount, SUM(price) " +
                 "AS AllPrice FROM Technique t GROUP BY t.factory_id ORDER BY t.factory_id";
         try (Connection connection = DBInfo.getConn();
-             Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(sql)) {
-            int columns = resultSet.getMetaData().getColumnCount();
+             PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery()) {
+            int columns = statement.getMetaData().getColumnCount();
             System.out.println("#Factory = count   =   prices");
             while (resultSet.next()) {
                 for (int i = 1; i <= columns; i++) {
