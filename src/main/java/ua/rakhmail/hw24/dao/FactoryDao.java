@@ -39,13 +39,19 @@ public class FactoryDao {
     }
 
     public void deleteByID(int id) {
+        Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            Transaction transaction = session.beginTransaction();
+            transaction = session.beginTransaction();
             Query query = session.createQuery(
                             "DELETE FROM Factory f WHERE f.id = :id")
                     .setParameter("id", id);
             query.executeUpdate();
             transaction.commit();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            if (transaction != null) {
+                transaction.rollback();
+            }
         }
     }
 
