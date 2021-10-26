@@ -46,5 +46,8 @@ public class Main {
         // удаляем технику #3 из БД
         vehicleDAO.deleteVehicle(3);
         System.out.println("Vehicle #3 is delete , so getVehicle #3 is " + vehicleDAO.getVehicle(3));
+
+        System.out.println();
+        vehicleDAO.getVehicles().forEach(System.out::println);
     }
 }
