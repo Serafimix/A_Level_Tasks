@@ -71,6 +71,7 @@ class VehicleTest {
         Assertions.assertEquals("test", vehicleDAO.getVehicle(3).getName());
     }
 
+    @Test
     void deleteVehicle() {
         VehicleDAO vehicleDAO = new VehicleDAO();
         Vehicle vehicle = vehicleDAO.getVehicle(2);
