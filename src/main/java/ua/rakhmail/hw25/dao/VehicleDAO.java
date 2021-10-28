@@ -6,7 +6,6 @@ import ua.rakhmail.hw25.entity.Vehicle;
 import ua.rakhmail.hw25.utils.HibernateUtil;
 
 import javax.persistence.Query;
-import java.util.ArrayList;
 import java.util.List;
 
 public class VehicleDAO {

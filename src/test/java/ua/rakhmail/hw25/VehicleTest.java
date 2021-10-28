@@ -1,5 +1,10 @@
 package ua.rakhmail.hw25;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import ua.rakhmail.hw25.dao.VehicleDAO;
 import ua.rakhmail.hw25.entity.Owner;
 import ua.rakhmail.hw25.entity.TyresType;
@@ -10,14 +15,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-public class Main {
-    public static void main(String[] args) {
-
-        /*
-        TESTS IS INCLUDED ON  "src/test/java/ua/rakhmail/hw25"
-         */
-
-
+class VehicleTest {
+    @BeforeAll
+    static void setUp() {
         // создаем 4 персонажа
         Owner owner1 = new Owner("Barbara", "Gordon");
         Owner owner2 = new Owner("William", "Hand");
@@ -40,24 +40,42 @@ public class Main {
 
         // сохраняем в базу данных
         vehicles.forEach(vehicleDAO::saveVehicle);
+    }
 
-        // выводим всю технику в консоль
-        vehicleDAO.getVehicles().forEach(System.out::println);
+    @Test
+    void getAllVehicleWithoutException() {
+        VehicleDAO vehicleDAO = new VehicleDAO();
+        vehicleDAO.getVehicles();
+    }
 
-        // выводим технику под номером 3 в консоль
-        System.out.println(System.lineSeparator() + "Get Vehicle #3 " + vehicleDAO.getVehicle(3));
+    @Test
+    void saveAndGetNewVehicle() {
+        VehicleDAO vehicleDAO = new VehicleDAO();
+        Vehicle vehicle = new Vehicle("test", "test", 1, TyresType.ALL_SEASON, "test");
+        vehicleDAO.saveVehicle(vehicle);
+        Assertions.assertEquals("test", vehicleDAO.getVehicle(6).getName());
+    }
 
-        // изменяем существующую технику и изменяем её же в БД, выведя в консоль
-        Vehicle vehicleUpdate = vehicleDAO.getVehicle(3);
-        vehicleUpdate.setName("This was just a joke");
-        vehicleDAO.updateVehicle(vehicleUpdate);
-        System.out.println(System.lineSeparator() + "Vehicle #3 is update" + vehicleDAO.getVehicle(3));
+    @Test
+    void getFirstVehicle() {
+        VehicleDAO vehicleDAO = new VehicleDAO();
+        Assertions.assertEquals("Batgirl Cycle", vehicleDAO.getVehicle(1).getName());
+    }
 
-        // удаляем технику #3 из БД
-        vehicleDAO.deleteVehicle(3);
-        System.out.println("Vehicle #3 is delete , so getVehicle #3 is " + vehicleDAO.getVehicle(3));
+    @Test
+    void updateVehicle() {
+        VehicleDAO vehicleDAO = new VehicleDAO();
+        Vehicle vehicle = vehicleDAO.getVehicle(3);
+        vehicle.setName("test");
+        vehicleDAO.updateVehicle(vehicle);
+        Assertions.assertEquals("test", vehicleDAO.getVehicle(3).getName());
+    }
 
-        System.out.println();
-        vehicleDAO.getVehicles().forEach(System.out::println);
+    void deleteVehicle() {
+        VehicleDAO vehicleDAO = new VehicleDAO();
+        Vehicle vehicle = vehicleDAO.getVehicle(2);
+        Assertions.assertEquals("BlackHand car", vehicleDAO.getVehicle(2).getName());
+        vehicleDAO.deleteVehicle(2);
+        Assertions.assertNull(vehicleDAO.getVehicle(2));
     }
 }
