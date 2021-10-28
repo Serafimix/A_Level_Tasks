@@ -43,9 +43,9 @@ class VehicleTest {
     }
 
     @Test
-    void getAllVehicleWithoutException() {
+    void getAllVehicleCount() {
         VehicleDAO vehicleDAO = new VehicleDAO();
-        vehicleDAO.getVehicles();
+        Assertions.assertEquals(5, vehicleDAO.getVehicles().size());
     }
 
     @Test
