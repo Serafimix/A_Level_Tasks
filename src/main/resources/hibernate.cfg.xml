@@ -26,6 +26,12 @@
         <property name="hibernate.dbcp.minIdle">5</property>
         <property name="hibernate.dbcp.maxWaitMillis">-1</property>
 
-        <mapping resource="hibernate.hbm.xml"/>
+        <mapping class="ua.rakhmail.hw25.entity.Owner"/>
+        <mapping class="ua.rakhmail.hw25.entity.Vehicle"/>
+
+
+<!--        for 24 HW-->
+<!--        <mapping resource="hibernate.hbm.xml"/>-->
+
     </session-factory>
 </hibernate-configuration>

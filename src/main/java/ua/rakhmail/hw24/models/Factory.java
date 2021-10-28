@@ -13,7 +13,6 @@ import java.util.Set;
 @Table(name = "factory")
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class Factory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
