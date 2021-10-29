@@ -5,6 +5,7 @@ import ua.rakhmail.hw25.entity.Owner;
 import ua.rakhmail.hw25.entity.TyresType;
 import ua.rakhmail.hw25.entity.Vehicle;
 
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -13,10 +14,9 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        /*
+/*
 
-        TESTS IS INCLUDED ON  "src/test/java/ua/rakhmail/hw25"
-
+//        TESTS IS INCLUDED ON  "src/test/java/ua/rakhmail/hw25"
 
 
         // создаем 4 персонажа
@@ -26,15 +26,15 @@ public class Main {
         Owner owner4 = new Owner("Jay", "Garrick");
 
         // создаем 5 транспортныйх средств
-        Vehicle vehicle1 = new Vehicle("Batgirl Cycle", "1950-05-30", 25000, TyresType.SUMMER_SEASON, "2021-01-01");
+        Vehicle vehicle1 = new Vehicle("Batgirl Cycle", LocalDate.of(1933, 5, 25), 25000, TyresType.SUMMER_SEASON, LocalDate.now());
         vehicle1.setOwner(owner1);
-        Vehicle vehicle2 = new Vehicle("BlackHand car", "1999-09-29", 12500, TyresType.WINTER_SEASON, "2015-02-02");
+        Vehicle vehicle2 = new Vehicle("BlackHand car", LocalDate.of(1956, 6, 30), 12500, TyresType.WINTER_SEASON, LocalDate.now());
         vehicle2.setOwner(owner2);
-        Vehicle vehicle3 = new Vehicle("New Flash Cycle", "1988-08-08", 5000, TyresType.SUMMER_SEASON, "2018-08-08");
+        Vehicle vehicle3 = new Vehicle("New Flash Cycle", LocalDate.of(1967, 7, 14), 5000, TyresType.SUMMER_SEASON, LocalDate.now());
         vehicle3.setOwner(owner3);
-        Vehicle vehicle4 = new Vehicle("Flash Cycle", "1940-07-07", 10000, TyresType.WINTER_SEASON, "2014-04-04");
+        Vehicle vehicle4 = new Vehicle("Flash Cycle", LocalDate.of(1978, 8, 12), 10000, TyresType.WINTER_SEASON, LocalDate.now());
         vehicle4.setOwner(owner4);
-        Vehicle vehicle5 = new Vehicle("Joker Bicycle", "1966-06-06", 1, TyresType.ALL_SEASON, "not date text");
+        Vehicle vehicle5 = new Vehicle("Joker Bicycle", LocalDate.of(1988, 9, 5), 1, TyresType.ALL_SEASON, LocalDate.now());
         List<Vehicle> vehicles = new LinkedList<>();
         Collections.addAll(vehicles, vehicle1, vehicle2, vehicle3, vehicle4, vehicle5);
         VehicleDAO vehicleDAO = new VehicleDAO();
@@ -61,7 +61,7 @@ public class Main {
         System.out.println();
         vehicleDAO.getVehicles().forEach(System.out::println);
 
-         */
+*/
 
     }
 }
