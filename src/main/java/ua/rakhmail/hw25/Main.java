@@ -14,8 +14,9 @@ public class Main {
     public static void main(String[] args) {
 
         /*
+
         TESTS IS INCLUDED ON  "src/test/java/ua/rakhmail/hw25"
-         */
+
 
 
         // создаем 4 персонажа
@@ -59,5 +60,8 @@ public class Main {
 
         System.out.println();
         vehicleDAO.getVehicles().forEach(System.out::println);
+
+         */
+
     }
 }
