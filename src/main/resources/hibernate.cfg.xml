@@ -28,6 +28,12 @@
 
         <mapping class="ua.rakhmail.hw25.entity.Owner"/>
         <mapping class="ua.rakhmail.hw25.entity.Vehicle"/>
+        <mapping class="ua.rakhmail.hw26.entity.Album"/>
+        <mapping class="ua.rakhmail.hw26.entity.Artist"/>
+        <mapping class="ua.rakhmail.hw26.entity.BuyingAlbum"/>
+        <mapping class="ua.rakhmail.hw26.entity.Customer"/>
+        <mapping class="ua.rakhmail.hw26.entity.Orders"/>
+
 
 
 <!--        for 24 HW-->
