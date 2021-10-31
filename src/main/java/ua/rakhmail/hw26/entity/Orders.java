@@ -19,8 +19,12 @@ public class Orders {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "buying_album_id")
     private BuyingAlbum buyingAlbum;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
-    public Orders(BuyingAlbum buyingAlbum) {
+    public Orders(BuyingAlbum buyingAlbum, Customer customer) {
         this.buyingAlbum = buyingAlbum;
+        this.customer = customer;
     }
 }

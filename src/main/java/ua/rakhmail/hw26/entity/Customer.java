@@ -17,7 +17,9 @@ public class Customer {
     private String first_name;
     @Column(nullable = false)
     private String last_name;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "order_id")
-    private Orders order;
+
+    public Customer(String first_name, String last_name) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+    }
 }

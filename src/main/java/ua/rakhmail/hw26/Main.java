@@ -13,8 +13,10 @@ public class Main {
         Album album1 = new Album("Gorillaz Album", LocalDate.of(2000, 5, 30),
                 MusicStyle.ROCK, "Fell good inc.", artist1);
         BuyingAlbum buyingAlbum1 = new BuyingAlbum(album1);
-        Orders order1 = new Orders(buyingAlbum1);
+        Customer customer1 = new Customer("Mr.", "Smith");
+        Orders order1 = new Orders(buyingAlbum1, customer1);
         orderDAO.save(order1);
         System.out.println(orderDAO.getById(1));
+
     }
 }
