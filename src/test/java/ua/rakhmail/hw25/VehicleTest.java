@@ -17,8 +17,10 @@ import java.util.List;
 
 
 class VehicleTest {
+    private static VehicleDAO vehicleDAO;
     @BeforeAll
     static void setUp() {
+        vehicleDAO = new VehicleDAO();
         // создаем 4 персонажа
         Owner owner1 = new Owner("Barbara", "Gordon");
         Owner owner2 = new Owner("William", "Hand");
@@ -45,13 +47,11 @@ class VehicleTest {
 
     @Test
     void getAllVehicleCount() {
-        VehicleDAO vehicleDAO = new VehicleDAO();
         Assertions.assertEquals(5, vehicleDAO.getVehicles().size());
     }
 
     @Test
     void saveAndGetNewVehicle() {
-        VehicleDAO vehicleDAO = new VehicleDAO();
         Vehicle vehicle = new Vehicle("test", LocalDate.of(1900, 1, 1), 1, TyresType.ALL_SEASON, LocalDate.now());
         vehicleDAO.saveVehicle(vehicle);
         Assertions.assertEquals("test", vehicleDAO.getVehicle(6).getName());
@@ -59,13 +59,11 @@ class VehicleTest {
 
     @Test
     void getFirstVehicle() {
-        VehicleDAO vehicleDAO = new VehicleDAO();
         Assertions.assertEquals("Batgirl Cycle", vehicleDAO.getVehicle(1).getName());
     }
 
     @Test
     void updateVehicle() {
-        VehicleDAO vehicleDAO = new VehicleDAO();
         Vehicle vehicle = vehicleDAO.getVehicle(3);
         vehicle.setName("test");
         vehicleDAO.updateVehicle(vehicle);
@@ -74,7 +72,6 @@ class VehicleTest {
 
     @Test
     void deleteVehicle() {
-        VehicleDAO vehicleDAO = new VehicleDAO();
         Vehicle vehicle = vehicleDAO.getVehicle(2);
         Assertions.assertEquals("BlackHand car", vehicleDAO.getVehicle(2).getName());
         vehicleDAO.deleteVehicle(2);

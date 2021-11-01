@@ -58,6 +58,24 @@ public class OrderDAO {
         }
     }
 
+    public void insertOrder() {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            String hql = "INSERT INTO Orders (orderDate, buyingAlbum, customer) "
+                    + "SELECT orderDate, buyingAlbum, customer FROM Orders";
+            Query query = session.createQuery(hql);
+            int result = query.executeUpdate();
+            System.out.println("Rows affected: " + result);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+    }
+
     public Orders getById(int id) {
         Transaction transaction = null;
         Orders order = null;
@@ -78,6 +96,21 @@ public class OrderDAO {
             }
         }
         return order;
+    }
+
+    public void loadById(int id) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            Orders orders = session.load(Orders.class, id);
+            System.out.println(orders);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
     }
 
     public List<Orders> getAllOrder() {

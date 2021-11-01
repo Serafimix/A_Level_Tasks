@@ -17,19 +17,21 @@ public class Album {
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)
-    private LocalDate ReleaseDate;
+    private LocalDate releaseDate;
     @Enumerated(EnumType.STRING)
     private MusicStyle musicStyle;
+    private double price;
     private String single;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "artist_id")
     private Artist artist;
 
-    public Album(String name, LocalDate releaseDate, MusicStyle musicStyle, String single, Artist artist) {
+    public Album(String name, LocalDate releaseDate, MusicStyle musicStyle, String single, Artist artist, double price) {
         this.name = name;
-        ReleaseDate = releaseDate;
+        this.releaseDate = releaseDate;
         this.musicStyle = musicStyle;
         this.single = single;
         this.artist = artist;
+        this.price = price;
     }
 }
