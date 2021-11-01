@@ -1,0 +1,27 @@
+#!/bin/bash
+echo "Write 'First number' <SPACE> 'math operator' <SPACE> 'Second number'"
+echo "or write 'exit' for exit from the program"
+while [[ True ]]
+do
+  read first oper second
+  if [[ $first == "exit" ]]
+  then
+    echo "EXIT"
+    break
+  elif [[ "$first" =~ "^[0-9]+$" && "$second" =~ "^[0-9]+$" ]]
+  then
+    echo "NOT NUMBER INPUT"
+    break
+  else
+    case $oper in
+"+") let "result = first + second";;
+"-") let "result = first - second";;
+"/") let "result = first / second";;
+"*") let "result = first * second";;
+"%") let "result = first % second";;
+"**") let "result = first ** second";;
+*) echo "NOT MATH OPERATION INPUT" ; break ;;
+    esac
+    echo "result is $result"
+  fi
+done
