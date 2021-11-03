@@ -19,7 +19,6 @@ do
 "/") let "result = first / second";;
 "*") let "result = first * second";;
 "%") let "result = first % second";;
-"**") let "result = first ** second";;
 *) echo "NOT MATH OPERATION INPUT" ; break ;;
     esac
     echo "result is $result"
