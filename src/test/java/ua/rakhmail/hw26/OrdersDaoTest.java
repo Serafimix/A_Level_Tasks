@@ -48,13 +48,6 @@ class OrdersDaoTest {
         Assertions.assertEquals(orderDAO.getById(2).getCustomer(), orderDAO.getById(1).getCustomer());
     }
 
-//    @Test
-//    void insert() {
-//        orderDAO.insertOrder();
-//        Assertions.assertEquals(4, orderDAO.getAllOrder().size());
-//    }
-
-
     @Test
     void delete() {
         Orders orders = orderDAO.getById(3);
