@@ -18,9 +18,9 @@ public class AutoCreateGetter {
                 Method method = clazz.getMethod("printFields");
                 if (method.isAnnotationPresent(Init.class))
                     System.out.println(" method " + clazz + method);
-                Object sad = clazz.newInstance();
+                Object sad = new Object();
                 method.invoke(sad);
-            } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
                 e.printStackTrace();
             }
         }
@@ -88,7 +88,7 @@ public class AutoCreateGetter {
 
     private static void changeFieldWithMultiplier(Class<?> clas) {
         try {
-            Object box = clas.newInstance();
+            Object box = new Object();
             Field[] fields = clas.getDeclaredFields();
             for (var sizeField : fields) {
                 if (sizeField.isAnnotationPresent(Multiplier.class) && (sizeField.get(box) instanceof Number)) {
@@ -98,7 +98,7 @@ public class AutoCreateGetter {
                     System.out.println("After change " + clas + " size = " + sizeField.get(box));
                 }
             }
-        } catch (IllegalAccessException | InstantiationException e) {
+        } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
     }

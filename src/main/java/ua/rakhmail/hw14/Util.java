@@ -1,32 +1,32 @@
 package ua.rakhmail.hw14;
 
-import java.util.Arrays;
 import java.util.List;
 
-class Util<T> implements Multiplier<T> {
-    T value;
+class Util<T> implements Multiplier {
+    private T type;
 
-    public void printHashCode(T e) {
-        System.out.println("HashCode: " + e.hashCode());
+    public void printHashCode(T type) {
+        System.out.println("HashCode: " + type.hashCode());
     }
 
-    public void save(T value) {
-        this.value = value;
+    public void save(T type) {
+        this.type = type;
     }
 
     public T get() {
-        return value;
+        return type;
     }
 
     @Override
-    public T[] doubleValueIn(Number[] array) {
+    public <V extends Number> Number[] doubleValueIn(V[] array) {
+        Number[] result = new Number[array.length];
         for (int i = 0; i < array.length; i++) {
-            array[i] = array[i].doubleValue() * array[i].doubleValue();
+            result[i] = array[i].doubleValue() * array[i].doubleValue();
         }
-        return (T[]) Arrays.copyOf(array, array.length);
+        return result;
     }
 
-    public <T extends Number> void sum(T one, T two) {
+    public <V extends Number> void sum(V one, V two) {
         System.out.println(one.doubleValue() + two.doubleValue());
     }
 
