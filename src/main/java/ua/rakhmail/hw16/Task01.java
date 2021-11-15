@@ -18,16 +18,6 @@ public class Task01 {
         System.out.println("Start linkedList work" + System.lineSeparator() + LocalTime.now());
         takeRandom(linkedList);
         System.out.println("End linkedList work" + System.lineSeparator() + LocalTime.now());
-        /*
-        Start arrayList work
-        14:04:21.011032100
-        End arrayList work
-        14:04:21.058903300
-        Start linkedList work
-        14:04:21.058903300
-        End linkedList work
-        14:06:43.746182400
-        */
     }
 
     public static void fillList(List<Integer> list) {

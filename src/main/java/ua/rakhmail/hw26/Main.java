@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 public class Main {
 
-/*
+
 //    TESTS IS INCLUDED
 
 
@@ -52,6 +52,6 @@ public class Main {
         // get new order with new ID
         System.out.println(System.lineSeparator() + ORDER_DAO.getById(3));
         }
-        */
+
 
 }
