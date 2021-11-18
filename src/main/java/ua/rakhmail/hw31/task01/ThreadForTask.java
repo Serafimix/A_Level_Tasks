@@ -5,10 +5,8 @@ import java.util.*;
 public class ThreadForTask extends Thread {
 
     public void run() {
-
         ThreadsForThread th;
         List<ThreadsForThread> list = new ArrayList<>();
-
         try {
             for (int i = 0; i < 50; i++) {
                 th = new ThreadsForThread();
@@ -16,8 +14,7 @@ public class ThreadForTask extends Thread {
             }
             for (int i = 49; i >= 0; i--) {
                 list.get(i).start();
-                list.get(i).join(1);
-                list.get(i).interrupt();
+                list.get(i).join();
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
