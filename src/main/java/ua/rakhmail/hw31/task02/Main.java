@@ -15,14 +15,13 @@ public class Main {
         Thread t2 = new Thread(new ThreadForTask(numbers), "Thread2");
 
         t1.start();
-        t1.join();
         t2.start();
         t2.join();
         System.out.println(new ThreadForTask().getTemp());
     }
 
     private static void fillNumber(List<Integer> numbers) {
-        for (int i = 1; i < 101; i++) {
+        for (int i = 1; i < 5_000_000; i++) {
             numbers.add(i);
         }
     }

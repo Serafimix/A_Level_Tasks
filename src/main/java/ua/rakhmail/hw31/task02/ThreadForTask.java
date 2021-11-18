@@ -21,9 +21,11 @@ public class ThreadForTask implements Runnable{
 
     @Override
     public void run() {
-        int count = simpleCount(numbers);
-        temp += count;
-        System.out.println(count);
+        synchronized (numbers) {
+            int count = simpleCount(numbers);
+            temp += count;
+            System.out.println(count);
+        }
     }
 
     private static boolean isSimple(int number) {
