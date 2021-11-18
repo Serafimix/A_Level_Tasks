@@ -9,7 +9,7 @@ import java.util.List;
 @NoArgsConstructor
 public class ThreadForTask implements Runnable{
     private List<Integer> numbers;
-    private static int temp;
+    private static volatile int temp;
 
     public ThreadForTask(List<Integer> numbers) {
         this.numbers = numbers;
@@ -38,6 +38,8 @@ public class ThreadForTask implements Runnable{
     }
 
     private static int simpleCount(List<Integer> numbers) {
-        return (int) numbers.stream().filter(ThreadForTask::isSimple).count();
+        return (int) numbers.stream()
+                .filter(ThreadForTask::isSimple)
+                .count();
     }
 }
