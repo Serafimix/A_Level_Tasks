@@ -1,6 +1,6 @@
-package ua.rakhmail.hw32;
+package ua.rakhmail.hw32.task02;
 
-import ua.rakhmail.hw32.hippodrome.Hippodrome;
+import ua.rakhmail.hw32.task02.hippodrome.Hippodrome;
 
 public class Main {
     public static void main(String[] args) {
