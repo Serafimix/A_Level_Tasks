@@ -12,7 +12,7 @@ public class HorseThread extends Thread{
     private final int number;
     private int distance;
     private volatile int placeInRace;
-    private static AtomicInteger placeCount = new AtomicInteger(0);
+    private static final AtomicInteger placeCount = new AtomicInteger(0);
 
     public HorseThread() {
         number = count++;
@@ -26,6 +26,8 @@ public class HorseThread extends Thread{
             Thread.sleep(ThreadLocalRandom.current().nextLong(400, 500));
         }
         placeInRace = placeCount.addAndGet(1);
+
+        // если вводить больше 10 лошадей, эту строчку лучше закоментировать.
         System.out.println(getName() + "Finish in place" + placeInRace);
     }
 
