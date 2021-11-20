@@ -26,8 +26,6 @@ public class HorseThread extends Thread{
             Thread.sleep(ThreadLocalRandom.current().nextLong(400, 500));
         }
         placeInRace = placeCount.addAndGet(1);
-
-        // если вводить больше 10 лошадей, эту строчку лучше закоментировать.
         System.out.println(getName() + "Finish in place" + placeInRace);
     }
 

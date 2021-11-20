@@ -7,34 +7,12 @@ import java.util.Optional;
 import java.util.Scanner;
 
 public class Hippodrome {
-
     @SneakyThrows
     public static void startRace() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please, enter numbers of horses for this race");
-        int numbersOfHorse = 0;
-        try {
-            numbersOfHorse = Integer.parseInt(scanner.nextLine());
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-        System.out.println("Please, choice number of you horse:" + System.lineSeparator()
-                + "from 1 to you choice of count horses:");
-        String choice = scanner.nextLine();
-        int asChoice = 0;
-        try {
-            asChoice = Integer.parseInt(choice);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+        int numbersOfHorse = createNumberOfHorses();
+        int asChoice = choiceHorses(numbersOfHorse);
         System.out.println("Attention");
         Thread.sleep(1000);
-
-//        for (int i = 3; i > 0; i--) {
-//            System.out.println(i);
-//            Thread.sleep(1000);
-//        }
-
         System.out.println("START!");
         ArrayList<HorseThread> horses = new ArrayList<>();
         HorseThread horseThread;
@@ -45,21 +23,58 @@ public class Hippodrome {
         }
         horses.forEach(Thread::start);
 
-        /* так как я здесь проверил существует ли лошать, которую мы выбрали,
-           мы можем без опаски достать коня с опционала и делать с ним разные проверки без возможности на exception.
-         */
-
-        if (asChoice > 0 && asChoice <= numbersOfHorse) {
-            Optional<HorseThread> youHorse;
-            int finalAsChoice = asChoice;
-            youHorse = horses.stream().filter(x -> x.getNumber() == finalAsChoice).findFirst();
-            while (youHorse.get().getPlaceInRace() == 0) {
-                Thread.sleep(100);
+        while (true) {
+            if (horses.stream().noneMatch(Thread::isAlive)) {
+                Optional<HorseThread> youHorse;
+                youHorse = horses.stream().filter(x -> x.getNumber() == asChoice).findFirst();
+                while (youHorse.get().getPlaceInRace() == 0) {
+                    Thread.sleep(100);
+                }
+                System.out.print("Place of you horse with #" + asChoice + " come in ");
+                System.out.println(youHorse.get().getPlaceInRace() + " place");
+                break;
+            } else {
+                Thread.sleep(1000);
             }
-            System.out.print("Place of you horse with #" + asChoice + " come in ");
-            System.out.println(youHorse.get().getPlaceInRace() + " place");
-        } else {
-            System.out.println("You don't choice any real horse...");
+        }
+    }
+
+    private static int createNumberOfHorses() {
+        System.out.println("Please, enter numbers of horses for this race");
+        Scanner scanner = new Scanner(System.in);
+        String text = "Please, write correct positive Number e.g: '5', '15'";
+        int count;
+        while (true) {
+            try {
+                count = Integer.parseInt(scanner.nextLine());
+                if (count > 0) {
+                    return count;
+                } else {
+                    System.out.println(text);
+                }
+            } catch (Exception e) {
+                System.out.println(text);
+            }
+        }
+    }
+
+    private static int choiceHorses(int x) {
+        System.out.println("Please, choice number of you horse:" + System.lineSeparator()
+                + "from 1 to you choice of count horses:");
+        Scanner scanner = new Scanner(System.in);
+        String text = "Please, write correct Number e.g: '5', '15'. from 1 to count of horses.";
+        int count;
+        while (true) {
+            try {
+                count = Integer.parseInt(scanner.nextLine());
+                if (count <= x && count > 0) {
+                    return count;
+                } else {
+                    System.out.println(text);
+                }
+            } catch (Exception e) {
+                System.out.println(text);
+            }
         }
     }
 }
