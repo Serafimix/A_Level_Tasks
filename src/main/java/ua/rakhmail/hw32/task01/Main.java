@@ -1,32 +1,24 @@
 package ua.rakhmail.hw32.task01;
 
-import lombok.SneakyThrows;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 public class Main {
-    @SneakyThrows
-    public static void main(String[] args) {
-        Lock lock = new ReentrantLock();
-        Thread thread;
-        for (int i = 0; i < 100; i++) {
-            thread = new Thread(() -> {
-                lock.lock();
-                count.set(count.get() + 2);
-                lock.unlock();
-            });
-            thread.start();
-            thread.join();
+    public static void main(String[] args) throws InterruptedException {
+        final int counter = 100;
+        AtomicInteger number = new AtomicInteger(50);
+        CountDownLatch latch = new CountDownLatch(counter);
+        Runnable adders = () -> {
+            try {
+                number.addAndGet(2);
+            } finally {
+                latch.countDown();
+            }
+        };
+        for (int x = 0; x < counter; x++) {
+            new Thread(adders).start();
         }
-        System.out.println(count.get());
+        latch.await();
+        System.out.println(number);
     }
-
-
-    private static final AtomicInteger count = new AtomicInteger(50);
-
-
 }
