@@ -13,14 +13,14 @@ public class MainServlet extends HttpServlet {
 
     @Override
     public void init() {
-        userInfo.getUserInfo().put("127.0.0.1", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Firefox/71.0");
-        userInfo.getUserInfo().put("127.0.0.3", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Firefox/71.0");
-        userInfo.getUserInfo().put("127.0.0.6", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Firefox/71.0");
-        userInfo.getUserInfo().put("127.0.0.5", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Firefox/71.0");
-        userInfo.getUserInfo().put("127.0.0.4", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Firefox/71.0");
-        userInfo.getUserInfo().put("127.0.0.7", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Firefox/71.0");
-        userInfo.getUserInfo().put("127.0.0.8", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Firefox/71.0");
-        userInfo.getUserInfo().put("127.0.0.9", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Firefox/71.0");
+        userInfo.addUsers("127.0.0.1", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Firefox/71.0");
+        userInfo.addUsers("127.0.0.3", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Firefox/71.0");
+        userInfo.addUsers("127.0.0.6", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Firefox/71.0");
+        userInfo.addUsers("127.0.0.5", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Firefox/71.0");
+        userInfo.addUsers("127.0.0.4", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Firefox/71.0");
+        userInfo.addUsers("127.0.0.7", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Firefox/71.0");
+        userInfo.addUsers("127.0.0.8", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Firefox/71.0");
+        userInfo.addUsers("127.0.0.9", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Firefox/71.0");
     }
 
     @Override
@@ -29,23 +29,15 @@ public class MainServlet extends HttpServlet {
         resp.setContentType("text/html");
         responseBody.println("<h1 align=\"center\">There is a list of users</h1>");
 
-        userInfo.getUserInfo().put(req.getRemoteAddr(), req.getHeader("user-agent"));
-        long skip = 0;
-        if (userInfo.getUserInfo().size() > 5) {
-            skip = userInfo.getUserInfo().size() - 5;
-        }
+        userInfo.addUsers(req.getRemoteAddr(), req.getHeader("user-agent"));
 
-        userInfo.getUserInfo().entrySet().stream()
-                .skip(skip)
-                .forEach(x -> {
-                    String key = x.getKey();
-                    String value = x.getValue();
-                    if (value.equals(req.getHeader("user-agent")) && key.equals(req.getRemoteAddr())) {
-                        responseBody.println("<main align=\"center\"><b>Request from: " + "IP: " + key + ", Browser: " + value + "</b></main>");
-                    } else {
-                        responseBody.println("<main align=\"center\">Request from: " + "IP: " + key + ", Browser: " + value + "</main>");
-                    }
-                });
+        userInfo.getUserInfo().forEach((key, value) -> {
+            if (value.equals(req.getHeader("user-agent")) && key.equals(req.getRemoteAddr())) {
+                responseBody.println("<main align=\"center\"><b>Request from: " + "IP: " + key + ", Browser: " + value + "</b></main>");
+            } else {
+                responseBody.println("<main align=\"center\">Request from: " + "IP: " + key + ", Browser: " + value + "</main>");
+            }
+        });
 
         String client = req.getParameter("client");
         if (client == null) {
