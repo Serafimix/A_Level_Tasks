@@ -2,20 +2,17 @@ package ua.rakhmail.hw34.servlet;
 
 import ua.rakhmail.hw34.servlet.utils.ListInfo;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/")
 public class MainServlet extends HttpServlet {
     ListInfo userInfo = new ListInfo();
 
     @Override
-    public void init() throws ServletException {
+    public void init() {
         userInfo.getUserInfo().put("127.0.0.1", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Firefox/71.0");
         userInfo.getUserInfo().put("127.0.0.3", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Firefox/71.0");
         userInfo.getUserInfo().put("127.0.0.6", "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:71.0) Firefox/71.0");
@@ -55,18 +52,6 @@ public class MainServlet extends HttpServlet {
             client = "Anonymous";
         }
         responseBody.println("<h3 align=\"center\">Hello, " + client + " </h3>");
+        responseBody.println("<h3 align=\"center\"><a href=\"http://localhost:8080\"><-- you can tap here for BACK</a></h3>");
     }
-
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
-
-        super.doPost(req, resp);
-    }
-    @Override
-    public void destroy() {
-        System.out.println(getServletName() + " destroyed");
-    }
-
 }

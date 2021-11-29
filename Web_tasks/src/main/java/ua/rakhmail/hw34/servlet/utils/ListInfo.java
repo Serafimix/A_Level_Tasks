@@ -7,6 +7,6 @@ import java.util.Map;
 
 @Getter
 public class ListInfo {
-    private final Map<String, String> userInfo = new LinkedHashMap<>(5);
+    private final Map<String, String> userInfo = new LinkedHashMap<>();
 
 }
