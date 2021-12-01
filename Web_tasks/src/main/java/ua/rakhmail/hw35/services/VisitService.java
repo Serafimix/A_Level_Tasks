@@ -7,7 +7,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class VisitService {
-    private static final int MAX_SIZE = 3;
     private static int count = 0;
     private final static List<Visit> visits = new LinkedList<>();
     private static VisitService singleton = null;
@@ -32,11 +31,11 @@ public class VisitService {
         return visits;
     }
 
-    public void addVisit(Visit visit) {
+    public synchronized void addVisit(Visit visit) {
         incrementCounter();
         visits.add(visit);
 
-        if (visits.size() > MAX_SIZE) {
+        if (visits.size() > 3) {
             visits.remove(0);
         }
     }
