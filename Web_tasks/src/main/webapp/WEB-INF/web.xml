@@ -24,4 +24,28 @@
         <servlet-name>sandbox-jsp-servlet</servlet-name>
         <url-pattern>/sandbox</url-pattern>
     </servlet-mapping>
+
+<!--    for hw35-->
+
+    <servlet>
+        <servlet-name>visits-servlet</servlet-name>
+        <servlet-class>ua.rakhmail.hw35.servlet.VisitsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>visits-servlet</servlet-name>
+        <url-pattern>/visits</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>statistic-servlet</servlet-name>
+        <servlet-class>ua.rakhmail.hw35.servlet.StatisticServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>statistic-servlet</servlet-name>
+        <url-pattern>/statistics</url-pattern>
+    </servlet-mapping>
+
+
 </web-app>
