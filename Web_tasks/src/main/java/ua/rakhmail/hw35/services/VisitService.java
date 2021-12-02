@@ -3,12 +3,11 @@ package ua.rakhmail.hw35.services;
 import ua.rakhmail.hw35.objects.Statistic;
 import ua.rakhmail.hw35.objects.Visit;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.concurrent.ConcurrentLinkedDeque;
 
 public class VisitService {
     private static int count = 0;
-    private final static List<Visit> visits = new LinkedList<>();
+    private final static ConcurrentLinkedDeque<Visit> visits = new ConcurrentLinkedDeque<>();
     private static VisitService singleton = null;
 
     private VisitService() {
@@ -26,7 +25,7 @@ public class VisitService {
     }
 
 
-    public List<Visit> getVisits() {
+    public ConcurrentLinkedDeque<Visit> getVisits() {
         incrementCounter();
         return visits;
     }
@@ -36,7 +35,7 @@ public class VisitService {
         visits.add(visit);
 
         if (visits.size() > 3) {
-            visits.remove(0);
+            visits.removeFirst();
         }
     }
 

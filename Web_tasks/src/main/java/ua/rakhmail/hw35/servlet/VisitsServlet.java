@@ -22,11 +22,14 @@ public class VisitsServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        visitService.getVisits();
+//        PrintWriter responseBody = resp.getWriter();
+        resp.setContentType("text/html");
         String name = req.getParameter("name");
         String date = req.getParameter("date");
         String city = req.getParameter("city");
-        Visit visit = new Visit(name,date,city);
+        Visit visit = new Visit(name, date, city);
         visitService.addVisit(visit);
     }
 
