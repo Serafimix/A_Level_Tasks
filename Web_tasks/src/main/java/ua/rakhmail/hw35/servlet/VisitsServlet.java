@@ -23,7 +23,6 @@ public class VisitsServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        visitService.getVisits();
 //        PrintWriter responseBody = resp.getWriter();
         resp.setContentType("text/html");
         String name = req.getParameter("name");
