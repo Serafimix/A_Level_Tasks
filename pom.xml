@@ -11,6 +11,7 @@
     <modules>
         <module>Simple_tasks</module>
         <module>Web_tasks</module>
+        <module>Spring_tasks</module>
     </modules>
 
     <properties>
