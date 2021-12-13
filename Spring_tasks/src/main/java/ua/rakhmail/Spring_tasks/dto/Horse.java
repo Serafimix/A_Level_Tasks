@@ -3,15 +3,17 @@ package ua.rakhmail.Spring_tasks.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
+import ua.rakhmail.Spring_tasks.repository.entity.RaceEntity;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class Visit {
+@NoArgsConstructor
+public class Horse {
+
     private Long id;
     private String name;
-    private LocalDateTime date;
-    private String city;
+    private int place;
+    private boolean isChosen = false;
+
+    private RaceEntity race;
 }

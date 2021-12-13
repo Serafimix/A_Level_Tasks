@@ -1,14 +1,12 @@
 package ua.rakhmail.Spring_tasks.controller;
 
 import org.springframework.web.bind.annotation.*;
-import ua.rakhmail.Spring_tasks.dto.Visit;
-import ua.rakhmail.Spring_tasks.service.VisitService;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("")
-public class VisitController {
+public class RaceController {
     private final VisitService visitService;
 
     public VisitController(VisitService visitService) {
