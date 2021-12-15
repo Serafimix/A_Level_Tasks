@@ -23,4 +23,8 @@ public class RaceEntity {
     @OneToMany(mappedBy = "race")
     @ToString.Exclude
     private List<HorseEntity> horses = new ArrayList<>();
+
+    public RaceEntity(Long id, LocalDateTime date) {
+        this.date = date;
+    }
 }

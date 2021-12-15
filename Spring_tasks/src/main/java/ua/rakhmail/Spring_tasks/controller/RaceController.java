@@ -1,33 +1,41 @@
 package ua.rakhmail.Spring_tasks.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ua.rakhmail.Spring_tasks.service.HorseService;
+import ua.rakhmail.Spring_tasks.service.RaceService;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
 @RequestMapping("")
 public class RaceController {
-    private final VisitService visitService;
+    @Autowired
+    HorseService horseService;
+    RaceService raceService;
 
-    public VisitController(VisitService visitService) {
-        this.visitService = visitService;
+    @GetMapping("/")
+    public void getHelloInfo(){
+
     }
 
-    @GetMapping("/visit")
-    public List<Visit> getAllVisit() {
-        return visitService.getAllVisit();
+
+    @GetMapping("/race/{id}")
+    public String getRaceInfo(@PathVariable(name = "id") int id) {
+        return "raceInfo";
     }
 
-    @DeleteMapping("/visit/{visitId}")
-    public void deleteUser(@PathVariable long visitId) {
-        if (visitService.isExists(visitId)) {
-            visitService.deleteVisit(visitId);
-        }
+    @PostMapping("race/start/{id}")
+    public void startRace(@PathVariable(name = "count", value = "") int count) throws InterruptedException {
+
     }
 
-    @PostMapping("/visit")
-    public void createUser(@RequestBody Visit visit) {
-        visitService.saveVisit(visit);
+    @GetMapping("/stats")
+    public String getStats() {
+
+        return "stats";
     }
 
 }

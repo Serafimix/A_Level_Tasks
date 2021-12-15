@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+   <table>
+       <thead>
+           <tr>
+               <th> ID </th>
+               <th> Name </th>
+               <th> Place </th>
+               <th> Is chosen </th>
+           </tr>
+       </thead>
+       <tbody>
+   	<tr th:if="${horse.empty}">
+               <td colspan="4"> No Users Available </td>
+           </tr>
+           <tr th:each="horse : ${horses}">
+               <td><span th:text="${horse.id}"> ID </span></td>
+               <td><span th:text="${horse.name}"> Name </span></td>
+               <td><span th:text="${horse.place}"> Place </span></td>
+               <td><span th:text="${horse.isChosen}"> isChosen </span></td>
+           </tr>
+       </tbody>
+   </table>
+</body>
+</html>

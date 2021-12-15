@@ -21,7 +21,7 @@ public class Main {
     }
 
     private static void fillNumber(List<Integer> numbers) {
-        for (int i = 1; i < 5_000_000; i++) {
+        for (int i = 1; i < 10; i++) {
             numbers.add(i);
         }
     }

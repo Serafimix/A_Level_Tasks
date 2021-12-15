@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Data
-public class Hyppodrome {
+public class Hippodrome {
     private List<HorseThread> list = new ArrayList<>();
     private boolean isEnd = true;
 

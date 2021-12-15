@@ -22,10 +22,9 @@ public class HorseEntity {
     @JoinColumn(name = "race_id")
     private RaceEntity race;
 
-    public HorseEntity(String name, int place, boolean isChosen, RaceEntity race) {
+    public HorseEntity(Long id, String name, int place, boolean isChosen) {
         this.name = name;
         this.place = place;
         this.isChosen = isChosen;
-        this.race = race;
     }
 }
