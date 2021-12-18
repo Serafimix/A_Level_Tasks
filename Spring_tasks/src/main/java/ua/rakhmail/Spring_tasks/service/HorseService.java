@@ -22,7 +22,7 @@ public class HorseService {
     public List<Horse> getAllHorses() {
         List<Horse> horses = new ArrayList<>();
         horseRepository.findAll().forEach(it -> horses.add(new Horse(it.getId(), it.getName(), it.getPlace(),
-                it.isChosen())));
+                it.isChosen(), it.getRace())));
         return horses;
     }
 

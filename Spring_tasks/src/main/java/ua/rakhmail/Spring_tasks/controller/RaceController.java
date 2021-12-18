@@ -24,7 +24,7 @@ public class RaceController {
 
     @GetMapping("/race/{id}")
     public String getRaceInfo(@PathVariable(name = "id") int id) {
-        return "raceInfo";
+        return "horse";
     }
 
     @PostMapping("race/start/{id}")
